@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.stqa.pft.addressbook.ContactData;
+import ru.stqa.pft.addressbook.model.ContactData;
 
 public class NewContactCreationTests {
   private WebDriver wd;
