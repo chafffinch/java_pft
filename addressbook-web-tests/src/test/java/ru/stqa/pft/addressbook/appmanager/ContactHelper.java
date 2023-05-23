@@ -29,4 +29,12 @@ public class ContactHelper extends HelperBase {
         type(By.name("email"), contactData.getMail());
     }
 
+    public void initContactModification() {
+        click(By.name("edit"));
+    }
+
+    public void submitContactModification() {
+        click(By.name("update"));
+
+    }
 }
