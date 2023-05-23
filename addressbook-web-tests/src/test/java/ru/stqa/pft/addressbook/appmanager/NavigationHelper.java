@@ -6,6 +6,10 @@ import org.openqa.selenium.WebDriver;
 public class NavigationHelper {
     private WebDriver wd;
 
+    public void gotoNewContactPage() {
+        wd.findElement(By.linkText("add new")).click();
+    }
+
     public NavigationHelper(WebDriver wd) {
         this.wd = wd;
     }
