@@ -10,7 +10,8 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 
-public class ApplicationManager (String browser) {
+import java.util.concurrent.TimeUnit;
+public class ApplicationManager {
     WebDriver wd;
 
     private ContactHelper contactHelper;
@@ -31,7 +32,7 @@ public class ApplicationManager (String browser) {
             wd = new InternetExplorerDriver();
         }
         wd = new FirefoxDriver();
-       // wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); //это задержка
+        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS); //это задержка
         wd.get("http://localhost/addressbook/group.php");
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
