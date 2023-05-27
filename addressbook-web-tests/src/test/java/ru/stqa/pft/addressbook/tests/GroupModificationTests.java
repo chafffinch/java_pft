@@ -23,7 +23,7 @@ public class GroupModificationTests extends TestBase {
         app.getGroupHelper().submitGroupModification();
         app.getGroupHelper().returnToGroupPage();
 
-        List<GroupData> after = app.getGroupHelper().getGroupList();
+        List<GroupData> after = app.getGroupHelper().getGroupList();// в переменной after будет список
         Assert.assertEquals(after.size(), before.size());
 
         before.remove(before.size() - 1);
@@ -33,5 +33,4 @@ public class GroupModificationTests extends TestBase {
         after.sort(byId);
         Assert.assertEquals(before, after);
     }
-
 }
