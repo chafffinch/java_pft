@@ -9,7 +9,6 @@ import ru.stqa.pft.addressbook.model.ContactData;
 public class ContactHelper extends HelperBase {
 
     public ContactHelper(WebDriver wd) {
-
         super(wd);
     }
 
@@ -39,7 +38,7 @@ public class ContactHelper extends HelperBase {
 
         if (creation) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-        }   else {
+        }   else{
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
     }
@@ -58,7 +57,12 @@ public class ContactHelper extends HelperBase {
         submitContactForm();
         returnToHomePage();
     }
+
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
     }
+    public int getContactCount() {
+        return wd.findElements(By.name("selected[]")).size();
+    }
+
 }
