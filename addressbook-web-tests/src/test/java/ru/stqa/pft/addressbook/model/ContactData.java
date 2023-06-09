@@ -2,16 +2,27 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-    private int id = Integer.MAX_VALUE;;
+    private int id = Integer.MAX_VALUE;
+    ;
     private String name;
     private String firstname;
     private String mobileTelephone;
     private String mail;
     private String group;
+    private String homePhone;
+    private String workPhone;
 
 
     public int getId() {
         return id;
+    }
+
+    public String getHomePhone() {
+        return homePhone;
+    }
+
+    public String getWorkPhone() {
+        return workPhone;
     }
 
     public ContactData withId(int id) {
@@ -36,6 +47,16 @@ public class ContactData {
 
     public ContactData withMail(String mail) {
         this.mail = mail;
+        return this;
+    }
+
+    public ContactData withWorkPhone(String workPhone) {
+        this.workPhone = workPhone;
+        return this;
+    }
+
+    public ContactData withHomePhone(String homePhone) {
+        this.homePhone = homePhone;
         return this;
     }
 
@@ -65,26 +86,30 @@ public class ContactData {
     }
 
     @Override
-    public String toString() {
-        return "ContactData{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", firstname='" + firstname + '\'' +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
         return id == that.id &&
                 Objects.equals(name, that.name) &&
-                Objects.equals(firstname, that.firstname);
+                Objects.equals(firstname, that.firstname) &&
+                Objects.equals(mobileTelephone, that.mobileTelephone) &&
+                Objects.equals(homePhone, that.homePhone) &&
+                Objects.equals(workPhone, that.workPhone);
+
     }
 
-    @Override
     public int hashCode() {
-        return Objects.hash(id, name, firstname);
+        return Objects.hash(id, name, firstname, mobileTelephone, homePhone, workPhone);
+    }
+
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", firstname='" + firstname + '\'' +
+                '}';
     }
 }

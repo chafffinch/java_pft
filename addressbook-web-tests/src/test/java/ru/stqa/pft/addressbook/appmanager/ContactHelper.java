@@ -1,11 +1,13 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
 import java.util.HashSet;
 import java.util.List;
@@ -55,6 +57,12 @@ public class ContactHelper extends HelperBase {
 
     public void initContactModificationById(int id) {
         wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
+        // WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+        // WebElement row = checkbox.findElement(By.xpath("./../../"));
+        // List<WebElement> cells = row.findElements(By.tagName("td"));
+        // cells.get(7).findElement(By.tagName("a")).click();
+
+        // wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
     }
 
     public void submitContactModification() {
@@ -113,5 +121,16 @@ public class ContactHelper extends HelperBase {
             contactCash.add(new ContactData().withId(id).withName(name).withFirstname(firstname));
         }
         return new Contacts(contactCash);
+    }
+    public ContactData infoFromEditForm(ContactData contact) {
+        initContactModificationById(contact.getId());
+        String name = wd.findElement(By.name("firstname")).getAttribute("value");
+        String firstname = wd.findElement(By.name("lastname")).getAttribute("value");
+        String home = wd.findElement(By.name("home")).getAttribute("value");
+        String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+        String work = wd.findElement(By.name("work")).getAttribute("value");
+        wd.navigate().back();
+        return new ContactData().withId(contact.getId()).withName(name).withFirstname(firstname).
+                withHomePhone(home).withMobileTelephone(mobile).withWorkPhone(work);
     }
 }
