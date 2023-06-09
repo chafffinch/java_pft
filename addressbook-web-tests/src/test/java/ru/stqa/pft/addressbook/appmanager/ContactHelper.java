@@ -117,11 +117,28 @@ public class ContactHelper extends HelperBase {
         for (WebElement element : elements) {
             String name = element.findElement(By.xpath(".//td[3]")).getText();
             String firstname = element.findElement(By.xpath(".//td[2]")).getText();
+            String[] phones = element.findElement(By.xpath(".//td[6]")).getText().split("\n");
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-            contactCash.add(new ContactData().withId(id).withName(name).withFirstname(firstname));
+            contactCash.add(new ContactData().withId(id).withName(name).withFirstname(firstname).withHomePhone(phones[0])
+                    .withMobileTelephone(phones[1]).withWorkPhone(phones[2]));
         }
         return new Contacts(contactCash);
     }
+    //public Set<ContactData> all() {
+    // Set<ContactData> contacts = new HashSet<ContactData>();
+    //List<WebElement> rows = wd.findElements(By.name("entry"));
+    //for (WebElement row : rows) {
+    //  List<WebElement> cells = row.findElements(By.tagName("td"));
+    //  int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+    //  String name = cells.get(1).getText();
+    //  String firstname = cells.get(2).getText();
+    //  String[] phones =  cells.get(5).getText().split("\n");
+    //  contacts.add(new ContactData().withId(id).withName(name).withFirstname(firstname).withHomePhone(phones[0])
+    //          .withMobileTelephone(phones[1]).withWorkPhone(phones[2]));
+
+    //  }
+    // }
+
     public ContactData infoFromEditForm(ContactData contact) {
         initContactModificationById(contact.getId());
         String name = wd.findElement(By.name("firstname")).getAttribute("value");
