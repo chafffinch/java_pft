@@ -11,24 +11,22 @@ public class GroupData {
         return id;
     }
 
-    public GroupData withId(int id) {
+    public void setId(int id) {
         this.id = id;
-        return this;
     }
 
-    public GroupData withName(String name) {
+    public GroupData(int id, String name, String header, String footer) {
+        this.id = id;
         this.name = name;
-        return this;
-    }
-
-    public GroupData withHeader(String header) {
         this.header = header;
-        return this;
+        this.footer = footer;
     }
 
-    public GroupData withFooter(String footer) {
+    public GroupData(String name, String header, String footer) {
+        this.id = Integer.MAX_VALUE;
+        this.name = name;
+        this.header = header;
         this.footer = footer;
-        return this;
     }
 
     public String getName() {
