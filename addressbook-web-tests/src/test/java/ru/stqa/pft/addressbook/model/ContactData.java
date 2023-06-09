@@ -14,28 +14,34 @@ public class ContactData {
         return id;
     }
 
-    public void setId(int id) {
+    public ContactData withId(int id) {
         this.id = id;
+        return this;
     }
 
-
-    public ContactData(String name, String firstname, String mobileTelephone, String mail, String group) {
-        this.id = Integer.MAX_VALUE;
+    public ContactData withName(String name) {
         this.name = name;
-        this.firstname = firstname;
-        this.mobileTelephone = mobileTelephone;
-        this.mail = mail;
-        this.group = group;
+        return this;
     }
 
-
-    public ContactData(int id, String name, String firstname, String mobileTelephone, String mail, String group) {
-        this.id = id;
-        this.name = name;
+    public ContactData withFirstname(String firstname) {
         this.firstname = firstname;
+        return this;
+    }
+
+    public ContactData withMobileTelephone(String mobileTelephone) {
         this.mobileTelephone = mobileTelephone;
+        return this;
+    }
+
+    public ContactData withMail(String mail) {
         this.mail = mail;
+        return this;
+    }
+
+    public ContactData withGroup(String group) {
         this.group = group;
+        return this;
     }
 
     public String getName() {
@@ -54,7 +60,10 @@ public class ContactData {
         return mail;
     }
 
-    public String getGroup() { return group; }
+    public String getGroup() {
+        return group;
+    }
+
 
     @Override
     public String toString() {
