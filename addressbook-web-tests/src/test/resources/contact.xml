@@ -1,0 +1,14 @@
+<list>
+    <contact>
+        <name>name0</name>
+        <firstname>firstname0</firstname>
+        <mobileTelephone>77-8340</mobileTelephone>
+        <group>test1</group>
+    </contact>
+    <contact>
+        <name>name1</name>
+        <firstname>firstname1</firstname>
+        <mobileTelephone>77-8341</mobileTelephone>
+        <group>test1</group>
+    </contact>
+</list>
