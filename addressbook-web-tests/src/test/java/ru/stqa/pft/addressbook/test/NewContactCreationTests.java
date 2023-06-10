@@ -22,12 +22,13 @@ public class NewContactCreationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validContacts() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
+        File photo = new File("src/test/resources/AvatarPhoto.jpeg");
         BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contact.csv")));
         String line = reader.readLine();
         while (line != null) {
             String[] split = line.split(";");
             list.add(new Object[]{new ContactData().withName(split[0]).withFirstname(split[1])
-                    .withMobileTelephone(split[2]).withGroup(split[3])});
+                    .withMobileTelephone(split[2])});
             line = reader.readLine();
         }
         return list.iterator();
