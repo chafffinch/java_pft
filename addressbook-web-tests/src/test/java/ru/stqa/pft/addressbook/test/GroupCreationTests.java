@@ -6,7 +6,6 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 import ru.stqa.pft.addressbook.tests.TestBase;
 
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;

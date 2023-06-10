@@ -56,3 +56,4 @@ public class ContactDataGenerator {
         return contacts;
     }
 }
+
