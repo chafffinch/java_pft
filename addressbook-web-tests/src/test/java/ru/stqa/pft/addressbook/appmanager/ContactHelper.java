@@ -46,6 +46,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("lastname"), contactData.getFirstname());
         type(By.name("mobile"), contactData.getMobileTelephone());
         type(By.name("email"), contactData.getMail());
+        attach(By.name("photo"), contactData.getPhoto());
 
         if (creation) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -120,8 +121,10 @@ public class ContactHelper extends HelperBase {
             String allPhones = element.findElement(By.xpath(".//td[6]")).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
             contactCash.add(new ContactData().withId(id).withName(name).withFirstname(firstname).withAllPhones(allPhones));
+        }
         return new Contacts(contactCash);
     }
+
     //public Set<ContactData> all() {
     // Set<ContactData> contacts = new HashSet<ContactData>();
     //List<WebElement> rows = wd.findElements(By.name("entry"));
