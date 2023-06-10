@@ -1,12 +1,12 @@
 package ru.stqa.pft.addressbook.test;
 
-
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 
 import java.io.*;
@@ -15,17 +15,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class NewContactCreationTests extends TestBase {
+public class GroupCreationTests extends TestBase {
 
     @DataProvider
-    public Iterator<Object[]> validContacts() throws IOException {
+    public Iterator<Object[]> validGroupsFromXml() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        File photo = new File("src/test/resources/Ferma.png");
-        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contact.xml")));
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.xml")));
         String xml = "";
         String line = reader.readLine();
         while (line != null) {
@@ -33,19 +31,46 @@ public class NewContactCreationTests extends TestBase {
             line = reader.readLine();
         }
         XStream xstream = new XStream();
-        xstream.processAnnotations(ContactData.class);
-        List<ContactData> contacts = (List<ContactData>) xstream.fromXML(xml);
-        return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
+        xstream.processAnnotations(GroupData.class);
+        List<GroupData> groups = (List<GroupData>) xstream.fromXML(xml);
+        return groups.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
     }
 
-    @Test (dataProvider = "validContacts")
-    public void testNewContactCreation(ContactData contact) throws Exception {
-        app.goTo().homePage();
-        Contacts before = app.contact().all();
-        app.contact().create(contact, true);
-        assertThat(app.contact().count(), equalTo(before.size() + 1));
-        Contacts after = app.contact().all();
-        assertThat(after, equalTo(
-                before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+    @DataProvider
+    public Iterator<Object[]> validGroupsFromJson() throws IOException {
+        List<Object[]> list = new ArrayList<Object[]>();
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.json")));
+        String json = "";
+        String line = reader.readLine();
+        while (line != null) {
+            json += line;
+            line = reader.readLine();
+        }
+        Gson gson = new Gson();
+        List<GroupData> groups = gson.fromJson(json, new TypeToken<List<GroupData>>(){}.getType());
+        return groups.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
     }
+
+    @Test(dataProvider = "validGroupsFromJson")
+    public void testGroupCreation(GroupData group) throws Exception {
+        app.goTo().groupPage();
+        Groups before = app.group().all();
+        app.group().create(group);
+        assertThat(app.group().count(), equalTo(before.size() + 1));
+        Groups after = app.group().all();
+        assertThat(after, equalTo(
+                before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+    }
+
+    @Test (enabled = false)
+    public void testBadGroupCreation() throws Exception {
+        app.goTo().groupPage();
+        Groups before = app.group().all();
+        GroupData group = new GroupData().withName("test2");
+        app.group().create(group);
+        assertThat(app.group().count(), equalTo(before.size()));
+        Groups after = app.group().all();
+        assertThat(after, equalTo(before));
+    }
+
 }

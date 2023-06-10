@@ -1,0 +1,14 @@
+[
+  {
+    "name": "name0",
+    "firstname": "firstname0",
+    "mobileTelephone": "02-3365",
+    "group": "test1"
+  },
+  {
+    "name": "name1",
+    "firstname": "firstname1",
+    "mobileTelephone": "02-3366",
+    "group": "test1"
+  }
+]
