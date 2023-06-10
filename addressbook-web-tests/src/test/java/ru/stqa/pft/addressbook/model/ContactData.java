@@ -20,6 +20,10 @@ public class ContactData {
     @Expose
     private String mail;
     @Expose
+    private String mail2;
+    @Expose
+    private String mail3;
+    @Expose
     private String group;
     @Expose
     private String homePhone;
@@ -28,7 +32,47 @@ public class ContactData {
     @Expose
     private String allPhones;
     @Expose
+    private String allMail;
+    @Expose
+    private String Address;
+    @Expose
     private File photo;
+
+    public String getMail2() {
+        return mail2;
+    }
+
+    public ContactData withMail2(String mail2) {
+        this.mail2 = mail2;
+        return this;
+    }
+
+    public String getMail3() {
+        return mail3;
+    }
+
+    public ContactData withMail3(String mail3) {
+        this.mail3 = mail3;
+        return this;
+    }
+
+    public String getAllMail() {
+        return allMail;
+    }
+
+    public ContactData withAllMail(String allMail) {
+        this.allMail = allMail;
+        return this;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public ContactData withAddress(String address) {
+        Address = address;
+        return this;
+    }
 
     public File getPhoto() {
         return photo;
