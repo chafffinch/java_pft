@@ -28,7 +28,7 @@ public class ApplicationManager {
             wd = new FirefoxDriver(new FirefoxOptions().setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe"));
         }   else if (browser.equals(Browser.CHROME.browserName())) {
             wd = new ChromeDriver(new ChromeOptions().setBinary("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe")); }
-            else if (browser.equals(Browser.IE.browserName())) {
+        else if (browser.equals(Browser.IE.browserName())) {
             wd = new InternetExplorerDriver();
         }
         wd = new FirefoxDriver();
@@ -55,15 +55,15 @@ public class ApplicationManager {
         }
     }
 
-    public GroupHelper group() {
+    public GroupHelper getGroupHelper() {
         return groupHelper;
     }
 
-    public NavigationHelper goTo() {
+    public NavigationHelper getNavigationHelper() {
         return navigationHelper;
     }
 
-    public ContactHelper contact() {
+    public ContactHelper getContactHelper() {
         return contactHelper;
     }
 
