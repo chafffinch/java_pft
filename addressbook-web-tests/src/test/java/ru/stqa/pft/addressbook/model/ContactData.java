@@ -1,20 +1,78 @@
 package ru.stqa.pft.addressbook.model;
-import java.util.Objects;
+
+import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import java.io.File;
+import java.util.Objects;
 
+@XStreamAlias("contact")
 public class ContactData {
-    private int id = Integer.MAX_VALUE;
-    ;
+    @XStreamOmitField
+    private int id = Integer.MAX_VALUE;;
+    @Expose
     private String name;
+    @Expose
     private String firstname;
+    @Expose
     private String mobileTelephone;
+    @Expose
     private String mail;
+    @Expose
+    private String mail2;
+    @Expose
+    private String mail3;
+    @Expose
     private String group;
+    @Expose
     private String homePhone;
+    @Expose
     private String workPhone;
+    @Expose
     private String allPhones;
-
+    @Expose
+    private String allMail;
+    @Expose
+    private String Address;
+    @Expose
     private File photo;
+
+    public String getMail2() {
+        return mail2;
+    }
+
+    public ContactData withMail2(String mail2) {
+        this.mail2 = mail2;
+        return this;
+    }
+
+    public String getMail3() {
+        return mail3;
+    }
+
+    public ContactData withMail3(String mail3) {
+        this.mail3 = mail3;
+        return this;
+    }
+
+    public String getAllMail() {
+        return allMail;
+    }
+
+    public ContactData withAllMail(String allMail) {
+        this.allMail = allMail;
+        return this;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public ContactData withAddress(String address) {
+        Address = address;
+        return this;
+    }
 
     public File getPhoto() {
         return photo;
@@ -116,13 +174,12 @@ public class ContactData {
         return id == that.id &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(firstname, that.firstname);
-
     }
 
+    @Override
     public int hashCode() {
         return Objects.hash(id, name, firstname);
     }
-
 
     @Override
     public String toString() {
@@ -132,4 +189,5 @@ public class ContactData {
                 ", firstname='" + firstname + '\'' +
                 '}';
     }
+
 }
