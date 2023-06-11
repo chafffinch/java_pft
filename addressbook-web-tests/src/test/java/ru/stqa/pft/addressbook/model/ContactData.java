@@ -1,18 +1,91 @@
 package ru.stqa.pft.addressbook.model;
+import java.util.Objects;
+import java.io.File;
 
 public class ContactData {
-    private final String firstname;
-    private final String lastname;
-    private final String address;
-    private final String email;
+    private int id = Integer.MAX_VALUE;
+    ;
+    private String name;
+    private String firstname;
+    private String mobileTelephone;
+    private String mail;
     private String group;
+    private String homePhone;
+    private String workPhone;
+    private String allPhones;
 
-    public ContactData(String firstname, String lastname, String address, String email) {
+    private File photo;
+
+    public File getPhoto() {
+        return photo;
+    }
+
+    public ContactData withPhoto(File photo) {
+        this.photo = photo;
+        return this;
+    }
+
+
+
+    public String getAllPhones() {
+        return allPhones;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getHomePhone() {
+        return homePhone;
+    }
+
+    public String getWorkPhone() {
+        return workPhone;
+    }
+
+    public ContactData withId(int id) {
+        this.id = id;
+        return this;
+    }
+
+    public ContactData withName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public ContactData withFirstname(String firstname) {
         this.firstname = firstname;
-        this.lastname = lastname;
-        this.address = address;
-        this.email = email;
+        return this;
+    }
 
+    public ContactData withMobileTelephone(String mobileTelephone) {
+        this.mobileTelephone = mobileTelephone;
+        return this;
+    }
+
+    public ContactData withMail(String mail) {
+        this.mail = mail;
+        return this;
+    }
+
+    public ContactData withWorkPhone(String workPhone) {
+        this.workPhone = workPhone;
+        return this;
+    }
+
+    public ContactData withHomePhone(String homePhone) {
+        this.homePhone = homePhone;
+        return this;
+    }
+
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
     }
 
     public String getName() {
@@ -35,4 +108,28 @@ public class ContactData {
         return group;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContactData that = (ContactData) o;
+        return id == that.id &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(firstname, that.firstname);
+
+    }
+
+    public int hashCode() {
+        return Objects.hash(id, name, firstname);
+    }
+
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", firstname='" + firstname + '\'' +
+                '}';
+    }
 }

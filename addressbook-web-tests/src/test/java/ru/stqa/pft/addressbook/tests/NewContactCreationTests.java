@@ -1,19 +1,28 @@
 package ru.stqa.pft.addressbook.tests;
 
-import java.util.concurrent.TimeUnit;
-import org.testng.annotations.*;
-import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.stqa.pft.addressbook.model.ContactData;
 
+import org.testng.annotations.Test;
+import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
+import java.io.File;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class NewContactCreationTests extends TestBase {
+
     @Test
     public void testNewContactCreation() throws Exception {
-        app.getNavigationHelper().gotoContactPage();
-        app.getContactHelper().createContact(new ContactData("test1", "test2", "test3", "test4", "test5"), true);
+        app.goTo().homePage();
+        Contacts before = app.contact().all();
+        File photo = new File("src/test/resources/AvatarPhoto.png");
+        ContactData contact = new ContactData().withName("test1").withFirstname("test2")
+                .withPhoto(photo).withGroup("test5");
+        app.contact().create(contact, true);
+        assertThat(app.contact().count(), equalTo(before.size() + 1));
+        Contacts after = app.contact().all();
+        assertThat(after, equalTo(
+                before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
     }
-
 }
 
 
