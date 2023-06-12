@@ -9,7 +9,7 @@ import java.io.File;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ContactCreationTests extends TestBase {
+public class NewContactCreationTests extends TestBase {
 
     @Test
     public void testNewContactCreation() throws Exception {
