@@ -54,27 +54,27 @@ public class ContactDataGenerator {
     private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         String json = gson.toJson(contacts);
-        try (Writer writer = new FileWriter(file)) {
-            writer.write(json);
-        }
+        Writer writer = new FileWriter(file);
+        writer.write(json);
+        writer.close();
     }
 
     private void saveAsXml(List<ContactData> contacts, File file) throws IOException {
         XStream xstream = new XStream();
         xstream.processAnnotations(ContactData.class);
         String xml = xstream.toXML(contacts);
-        try (Writer writer = new FileWriter(file)) {
-            writer.write(xml);
-        }
+        Writer writer = new FileWriter(file);
+        writer.write(xml);
+        writer.close();
     }
 
     private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
-        try (Writer writer = new FileWriter(file)) {
-            for (ContactData contact : contacts) {
-                writer.write(String.format("%s;%s;%s;%s\n", contact.getName(), contact.getFirstname()
-                        , contact.getMobileTelephone(), contact.getGroup()));
-            }
+        Writer writer = new FileWriter(file);
+        for (ContactData contact : contacts) {
+            writer.write(String.format("%s;%s;%s;%s\n", contact.getName(), contact.getFirstname()
+                    , contact.getMobileTelephone(), contact.getGroup()));
         }
+        writer.close();
     }
 
     private List<ContactData> generateContact(int count) {
@@ -82,7 +82,7 @@ public class ContactDataGenerator {
         for (int i = 0; i < count; i++) {
             contacts.add(new ContactData().withName(String.format("name%s", i))
                     .withFirstname(String.format("firstname%s", i))
-                    .withMobileTelephone(String.format("77-834%s", i)).withGroup("test1"));
+                    .withMobileTelephone(String.format("977-302%s", i)).withGroup("test1"));
         }
         return contacts;
     }
