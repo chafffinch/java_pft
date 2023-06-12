@@ -1,0 +1,22 @@
+[
+  {
+    "name": "name0",
+    "firstname": "firstname0",
+    "mobileTelephone": "02-3365",
+    "mail": "kkk1@mail.ru",
+    "mail2": "ppp1@mail.ru",
+    "group": "test1",
+    "homePhone": "02-3376",
+    "Address": "Balashiha"
+  },
+  {
+    "name": "name1",
+    "firstname": "firstname1",
+    "mobileTelephone": "02-3366",
+    "mail": "kkk11@mail.ru",
+    "mail2": "ppp11@mail.ru",
+    "group": "test1",
+    "homePhone": "02-3376",
+    "Address": "Dom"
+  }
+]
