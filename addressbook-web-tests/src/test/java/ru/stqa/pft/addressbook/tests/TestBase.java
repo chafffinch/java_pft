@@ -6,7 +6,6 @@ import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 import org.openqa.selenium.remote.BrowserType;
 
 public class TestBase {
-
     protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
 
     @BeforeMethod(alwaysRun = true)
