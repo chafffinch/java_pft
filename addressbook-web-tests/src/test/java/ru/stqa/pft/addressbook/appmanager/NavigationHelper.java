@@ -8,7 +8,6 @@ public class NavigationHelper extends HelperBase{
     public NavigationHelper(WebDriver wd) {
         super(wd);
     }
-
     public void gotoNewContactPage() {
         if (isElementPresent(By.id("maintable"))) {
             return;
