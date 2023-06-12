@@ -11,6 +11,7 @@ public class NewContactCreationTests extends TestBase {
         app.getContactHelper().submitContactForm();
         app.getNavigationHelper().gotoHomePage();
     }
+
  }
 
 
