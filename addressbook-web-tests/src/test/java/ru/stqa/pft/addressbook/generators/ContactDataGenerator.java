@@ -40,7 +40,8 @@ public class ContactDataGenerator {
     private void save(List<ContactData> contacts, File file) throws IOException {
         Writer writer = new FileWriter(file);
         for (ContactData contact : contacts) {
-            writer.write(String.format("%s;%s;%s\n", contact.getName(), contact.getFirstname(), contact.getMobileTelephone()));
+            writer.write(String.format("%s;%s;%s;%s\n", contact.getName(), contact.getFirstname()
+                    , contact.getMobileTelephone(), contact.getGroup()));
         }
         writer.close();
     }
@@ -48,11 +49,10 @@ public class ContactDataGenerator {
     private List<ContactData> generateContact(int count) {
         List<ContactData> contacts = new ArrayList<ContactData>();
         for (int i = 0; i < count; i++) {
-            contacts.add(new ContactData().withName(String.format("name %s", i))
-                    .withFirstname(String.format("firstname %s", i))
-                    .withMobileTelephone(String.format("MobileTelephone %s", i)));
+            contacts.add(new ContactData().withName(String.format("name%s", i))
+                    .withFirstname(String.format("firstname%s", i))
+                    .withMobileTelephone(String.format("977-302%s", i)).withGroup("test1"));
         }
         return contacts;
     }
 }
-
