@@ -11,6 +11,7 @@ public class HelperBase {
     public HelperBase(WebDriver wd) {
         this.wd = wd;
     }
+
     protected void click(By locator) {
         wd.findElement(locator).click();
     }
@@ -19,7 +20,7 @@ public class HelperBase {
         click(locator);
         if (text != null) {
             String existingText = wd.findElement(locator).getAttribute("value");
-            if  (! text.equals(existingText)) {
+            if (!text.equals(existingText)) {
                 wd.findElement(locator).clear();
                 wd.findElement(locator).sendKeys(text);
             }
@@ -39,8 +40,9 @@ public class HelperBase {
         try {
             wd.findElement(locator);
             return true;
-        } catch (NoSuchElementException ex){
+        } catch (NoSuchElementException ex) {
             return false;
         }
     }
 }
+

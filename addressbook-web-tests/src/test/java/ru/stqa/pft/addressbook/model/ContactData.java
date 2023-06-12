@@ -14,6 +14,7 @@ public class ContactData {
         this.mail = mail;
         this.group = group;
     }
+
     public String getName() {
         return name;
     }

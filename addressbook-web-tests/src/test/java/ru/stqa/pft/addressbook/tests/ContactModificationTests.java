@@ -1,22 +1,22 @@
+
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 public class ContactModificationTests extends TestBase {
 
     @Test
     public void testContactModificationTests(){
         app.getNavigationHelper().gotoHomePage();
-        if (! app.getContactHelper().isThereAContact()) {
-            app.getContactHelper().createContact(
-                    new ContactData("test1", "test2", "test3", "test4", "test5"), true);
+        if(! app.getContactHelper().isThereAContact()) {
+            app.getContactHelper().createContact(new ContactData("marina", "alieva", "+79773023365", "furrycun11@gmail.com", "test1"), true);
         }
         app.getContactHelper().selectContact();
         app.getContactHelper().initContactModification();
-        app.getContactHelper().fillContactForm(new ContactData("test1", "test2", "test3", "test4", null), false);
+        app.getContactHelper().fillContactForm(new ContactData("marina", "alieva", "+79773023365", "furrycun11@gmail.com", null), false);
         app.getContactHelper().submitContactModification();
+
     }
 }
 

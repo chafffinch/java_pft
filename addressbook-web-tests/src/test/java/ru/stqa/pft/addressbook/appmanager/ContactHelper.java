@@ -12,16 +12,20 @@ public class ContactHelper extends HelperBase {
         super(wd);
     }
 
+    public void gotoNewContactPage() {
+        click(By.linkText("add new"));
+    }
+    public void returnToHomePage() {
+        click(By.linkText("home page"));
+    }
+
     public void deleteContact() {
         click(By.xpath("//input[@value='Delete']"));
+        wd.switchTo().alert().accept();
     }
 
     public void selectContact() {
         click(By.name("selected[]"));
-    }
-
-    public void returnToHomePage() {
-        click(By.linkText("home page"));
     }
 
     public void submitContactForm() {
@@ -49,13 +53,15 @@ public class ContactHelper extends HelperBase {
         click(By.name("update"));
 
     }
+
     public void createContact(ContactData contact, boolean b) {
-        fillContactForm(contact,b);
+        gotoNewContactPage();
+        fillContactForm(contact, b);
         submitContactForm();
         returnToHomePage();
     }
 
     public boolean isThereAContact() {
-        return  isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[3]/td/input"));
+        return isElementPresent(By.name("selected[]"));
     }
 }
