@@ -28,7 +28,6 @@ public class Groups extends ForwardingSet<GroupData> {
         groups.add(group);
         return groups;
     }
-
     public Groups without(GroupData group) {
         Groups groups = new Groups(this);
         groups.remove(group);

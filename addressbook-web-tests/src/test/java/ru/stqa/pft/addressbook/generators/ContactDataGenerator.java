@@ -67,7 +67,6 @@ public class ContactDataGenerator {
         writer.write(xml);
         writer.close();
     }
-
     private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
         Writer writer = new FileWriter(file);
         for (ContactData contact : contacts) {

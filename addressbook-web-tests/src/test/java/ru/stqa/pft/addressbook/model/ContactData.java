@@ -28,7 +28,7 @@ public class ContactData {
     @Expose
     private String allPhones;
     @XStreamOmitField
-    private File photo;
+    transient private File photo;
 
 
     public File getPhoto() {
