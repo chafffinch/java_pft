@@ -1,59 +1,49 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.Browser;
+import ru.stqa.pft.addressbook.appmanager.ContactHelper;
+import ru.stqa.pft.addressbook.appmanager.NavigationHelper;
 
-
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 public class ApplicationManager {
-    WebDriver wd;
-
-    private ContactHelper contactHelper;
+    public WebDriver wd;
     private SessionHelper sessionHelper;
-    private NavigationHelper navigationHelper;
+    private  NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
+    private ContactHelper contactHelper;
     private String browser;
 
     public ApplicationManager(String browser) {
+
         this.browser = browser;
     }
 
     public void init() {
-        if (browser.equals(BrowserType.FIREFOX)) {
+        if (browser == Browser.FIREFOX.browserName()){
             wd = new FirefoxDriver();
-        } else if (browser.equals(BrowserType.CHROME)) {
+        }
+        else if (browser == Browser.CHROME.browserName()){
             wd = new ChromeDriver();
-        } else if (browser.equals(BrowserType.IE)) {
+        }
+        else if (browser == Browser.IE.browserName()){
             wd = new InternetExplorerDriver();
         }
-        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        wd.get("http://localhost/addressbook/");
+        wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
-        contactHelper = new ContactHelper(wd);
         sessionHelper.login("admin", "secret");
-        navigationHelper.gotoNewContactPage();
+        contactHelper = new ContactHelper(wd);
     }
 
 
     public void stop() {
         wd.quit();
-    }
-
-    public boolean isElementPresent(By by) {
-        try {
-            wd.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
     }
 
     public GroupHelper group() {
@@ -63,8 +53,5 @@ public class ApplicationManager {
     public NavigationHelper goTo() {
         return navigationHelper;
     }
-
-    public ContactHelper contact() {
-        return contactHelper;
-    }
+    public ContactHelper contact() {return contactHelper; }
 }
