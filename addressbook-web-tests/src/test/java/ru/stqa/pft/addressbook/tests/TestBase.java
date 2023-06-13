@@ -1,24 +1,22 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.openqa.selenium.remote.Browser;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import ru.stqa.pft.addressbook.manager.ApplicationManager;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
+import org.openqa.selenium.remote.BrowserType;
 
 public class TestBase {
 
-    protected static final ApplicationManager app = new ApplicationManager(Browser.FIREFOX.browserName());
+    protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
 
-    @BeforeSuite(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
-
         app.init();
     }
 
-    @AfterSuite(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void tearDown() throws Exception {
         app.stop();
-
     }
 
 }

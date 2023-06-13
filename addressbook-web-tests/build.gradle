@@ -4,9 +4,10 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation group: 'org.testng', name: 'testng', version: '7.4.0'
-    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.9.0'
-    implementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
-    implementation group: 'com.beust', name: 'jcommander', version: '1.82'
-    implementation group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.20'
-    implementation group: 'com.google.code.gson', name: 'gson', version: '2.10.1'}
+    implementation group: 'org.testng', name: 'testng', version: '7.7.1'
+    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    implementation 'org.hamcrest:hamcrest:2.2'
+    implementation 'com.beust:jcommander:1.48'
+    implementation 'com.thoughtworks.xstream:xstream:1.4.20'
+    implementation 'com.google.code.gson:gson:2.8.5'
+}

@@ -8,6 +8,7 @@ import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,23 +17,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContactDataGenerator {
-
     @Parameter(names = "-c", description = "Contact count")
     public int count;
 
-    @Parameter(names = "-f", description = "Target file")
+    @Parameter (names = "-f", description = "Target file")
     public String file;
 
-    @Parameter(names = "-d", description = "Data file")
+    @Parameter (names = "-d", description = "Data format")
     public String format;
 
     public static void main(String[] args) throws IOException {
         ContactDataGenerator generator = new ContactDataGenerator();
-        JCommander JCommander = new JCommander(generator);
+        JCommander jCommander = new JCommander(generator);
         try {
-            JCommander.parse(args);
+            jCommander.parse(args);
         } catch (ParameterException ex) {
-            JCommander.usage();
+            jCommander.usage();
             return;
         }
         generator.run();
@@ -47,47 +47,43 @@ public class ContactDataGenerator {
         } else if (format.equals("json")) {
             saveAsJson(contacts, new File(file));
         } else {
-            System.out.println("Unrecognized format " + format);
+            System.out.println("Я не знаю такой формат" + format);
         }
     }
 
     private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
-
         Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         String json = gson.toJson(contacts);
-        try (Writer writer = new FileWriter(file)) {
-            writer.write(json);
-        }
+        Writer writer = new FileWriter(file);
+        writer.write(json);
+        writer.close();
     }
 
     private void saveAsXml(List<ContactData> contacts, File file) throws IOException {
         XStream xstream = new XStream();
         xstream.processAnnotations(ContactData.class);
         String xml = xstream.toXML(contacts);
-        try (Writer writer = new FileWriter(file)) {
-            writer.write(xml);
-        }
+        Writer writer = new FileWriter(file);
+        writer.write(xml);
+        writer.close();
     }
 
-
     private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
-        System.out.println(new File(".").getAbsoluteFile());
-        try (Writer writer = new FileWriter(file)) {
-            for (ContactData contact : contacts) {
-                writer.write(String.format("%s;%s;%s;%s;%s\n", contact.getLastname(), contact.getFirstname(),
-                        contact.getAddress(), contact.getEmail(), contact.getMobilePhone()));
-            }
+        Writer writer = new FileWriter(file);
+        for (ContactData contact : contacts) {
+            writer.write(String.format("%s;%s;%s;%s\n", contact.getName(), contact.getFirstname()
+                    , contact.getMobileTelephone(), contact.getGroup()));
         }
+        writer.close();
     }
 
     private List<ContactData> generateContact(int count) {
         List<ContactData> contacts = new ArrayList<ContactData>();
         for (int i = 0; i < count; i++) {
-            contacts.add(new ContactData().withLastname(String.format("marina", i))
-                    .withFirstname(String.format("alieva", i)).withAddress(String.format("street", i))
-                    .withMobilePhone(String.format("977%s" + "302", i)));
+            contacts.add(new ContactData().withName(String.format("name%s", i))
+                    .withFirstname(String.format("firstname%s", i))
+                    .withMobileTelephone(String.format("977-302%s", i)).withGroup("test1"));
         }
         return contacts;
     }
-
 }
