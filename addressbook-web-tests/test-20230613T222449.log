@@ -1,0 +1,4 @@
+562  [main] DEBUG org.testng.TestNG - suiteXmlPath: "C:\Users\furry\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml"
+941  [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\furry\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml
+
