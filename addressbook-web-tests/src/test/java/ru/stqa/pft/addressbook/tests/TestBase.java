@@ -11,6 +11,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 import org.openqa.selenium.remote.BrowserType;
+import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
@@ -57,4 +59,15 @@ public class TestBase {
                     .collect(Collectors.toSet())));
         }
     }
+    public void verifyContactListInUI() {
+        if (Boolean.getBoolean("verifyUI")) { //-DverifyUI=true добавлять в нужные тесты, где требуется проверка UI
+            Contacts dbContacts = app.db().contacts();
+            Contacts uiContacts = app.contact().all();
+            assertThat(uiContacts, equalTo(dbContacts.stream()
+                    .map((c) -> new ContactData().withId(c.getId()).withName(c.getName())
+                            .withFirstname(c.getFirstname()).withAddress(c.getAddress()))
+                    .collect(Collectors.toSet())));
+        }
+    }
+
 }
