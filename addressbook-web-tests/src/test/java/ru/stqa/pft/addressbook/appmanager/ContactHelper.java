@@ -7,10 +7,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -162,5 +161,46 @@ public class ContactHelper extends HelperBase {
         return new ContactData().withId(contact.getId()).withName(name).withFirstname(firstname).
                 withHomePhone(home).withMobileTelephone(mobile).withWorkPhone(work).withMail(mail).withAddress(address)
                 .withMail2(mail2).withMail3(mail3);
+    }
+
+    public void addToGroup(ContactData contact, GroupData addedGroup) {
+        selectContactById(contact.getId());
+        selectGroupToAdd(addedGroup);
+        pressAdd();
+        selectGoToGroupPage(addedGroup.getId());
+    }
+
+    public void selectGoToGroupPage(int id) {
+        wd.findElement(By.cssSelector("a[href='./?group=" + id + "']")).click();
+    }
+
+    public void pressAdd() {
+        wd.findElement(By.name("add")).click();
+    }
+
+    public void selectGroupToAdd(GroupData group) {
+        new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
+    }
+
+    public void showAllContact() {
+        new Select(wd.findElement(By.name("group"))).selectByVisibleText("[all]");
+    }
+
+    public void confirmRemoveGroup(ContactData contactRemove) {
+        wd.findElement(By.tagName("h1")).getText().equals("Groups");
+        Assert.assertTrue(isElementPresent(By.linkText("group page \""
+                + contactRemove.getGroups().iterator().next().getName() +"\"")));
+    }
+
+    public void contactGroupPage(ContactData contactRemove) {
+        Select select = new Select(wd.findElement(By.name("group")));
+        select.selectByVisibleText(contactRemove.getGroups().iterator().next().getName());
+    }
+
+    public void removeFromGroup(ContactData contactRemove) {
+        Assert.assertEquals(contactRemove.getGroups().size(), 1);
+        selectContactById(contactRemove.getId());
+        click(By.name("remove"));
+        confirmRemoveGroup(contactRemove);
     }
 }

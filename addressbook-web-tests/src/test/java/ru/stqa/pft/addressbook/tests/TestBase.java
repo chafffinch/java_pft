@@ -1,8 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
@@ -51,7 +50,7 @@ public class TestBase {
     }
 
     public void verifyGroupListInUI() {
-        if (Boolean.getBoolean("verifyUI")) { //-DverifyUI=true добавлять в нужные тесты, где требуется проверка UI
+        if (Boolean.getBoolean("verifyUI")) { //-DverufyUI=true добавлять в нужные тесты, где требуется проверка UI
             Groups dbGroups = app.db().groups();
             Groups uiGroups = app.group().all();
             assertThat(uiGroups, equalTo(dbGroups.stream()
@@ -60,7 +59,7 @@ public class TestBase {
         }
     }
     public void verifyContactListInUI() {
-        if (Boolean.getBoolean("verifyUI")) { //-DverifyUI=true добавлять в нужные тесты, где требуется проверка UI
+        if (Boolean.getBoolean("verifyUI")) { //-DverufyUI=true добавлять в нужные тесты, где требуется проверка UI
             Contacts dbContacts = app.db().contacts();
             Contacts uiContacts = app.contact().all();
             assertThat(uiContacts, equalTo(dbContacts.stream()

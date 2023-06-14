@@ -15,11 +15,13 @@ public class ContactMailAndAddressTests extends TestBase{
 
     @BeforeMethod
     public void ensurePrecondition() {
+        Groups groups = app.db().groups();
         app.goTo().homePage();
         if (app.contact().all().size() == 0) {
             app.contact().create(new ContactData().withName("marina").withFirstname("alieva").withMobileTelephone("977-302")
-                    .withHomePhone("977-303").inGroup(groups.iterator().next()).withAddress("msk").withMail("m@mail.ru")
-                    .withMail2("a@mail.com").withMail3("fjjdf@mail.ru"), true);
+                    .withHomePhone("977-303").inGroup(groups.iterator().next())
+                    .withAddress("msk").withMail("m@mail.ru").withMail2("a@mail.com")
+                    .withMail3("fjjdf@mail.ru"), true);
         }
     }
 
@@ -44,4 +46,3 @@ public class ContactMailAndAddressTests extends TestBase{
                 .collect(Collectors.joining("\n"));
     }
 }
-

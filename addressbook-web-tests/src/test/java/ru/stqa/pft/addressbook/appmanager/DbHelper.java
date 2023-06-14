@@ -10,6 +10,7 @@ import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
+
 import java.util.List;
 
 public class DbHelper {
@@ -22,13 +23,13 @@ public class DbHelper {
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure() // configures settings from hibernate.cfg.xml
                 .build();
-        sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
+        sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
     }
 
     public Groups groups() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<GroupData> result = session.createQuery( "from GroupData" ).list();
+        List<GroupData> result = session.createQuery("from GroupData").list();
         session.getTransaction().commit();
         session.close();
         return new Groups(result);
@@ -37,10 +38,24 @@ public class DbHelper {
     public Contacts contacts() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<ContactData> result = session.createQuery( "from ContactData where deprecated = '0000-00-00'" ).list();
+        List<ContactData> result = session.createQuery("from ContactData where deprecated = '0000-00-00'").list();
         session.getTransaction().commit();
         session.close();
-        return  new Contacts(result);
+        return new Contacts(result);
+    }
+
+    public void cycleByGroups(GroupData group) {
+
+        Session session = sessionFactory.openSession();
+        session.refresh(group);
+        session.close();
+    }
+
+    public void cycleByContacts(ContactData contact) {
+
+        Session session = sessionFactory.openSession();
+        session.refresh(contact);
+        session.close();
     }
 
 }

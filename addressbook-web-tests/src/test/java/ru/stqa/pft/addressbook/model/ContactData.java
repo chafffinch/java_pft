@@ -72,12 +72,11 @@ public class ContactData {
     @Expose
     @Column(name = "photo")
     @Type(type = "text")
-    private String photo = "";
+    private String photo;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "address_in_groups",
             joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
-
     private Set<GroupData> groups = new HashSet<GroupData>();
 
     public String getMail2() {
