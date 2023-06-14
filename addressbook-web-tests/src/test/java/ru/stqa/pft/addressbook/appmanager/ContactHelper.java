@@ -53,23 +53,19 @@ public class ContactHelper extends HelperBase {
         attach(By.name("photo"), contactData.getPhoto());
 
         if (creation) {
-            if (contactData.getGroups().size() > 0)
+            if (contactData.getGroups().size() > 0) {
                 Assert.assertTrue(contactData.getGroups().size() == 1);
-            new Select(wd.findElement(By.name("new_group")))
-                    .selectByVisibleText(contactData.getGroups().iterator().next().getName());
-        } else{
-            Assert.assertFalse(isElementPresent(By.name("new_group")));
+                new Select(wd.findElement(By.name("new_group")))
+                        .selectByVisibleText(contactData.getGroups().iterator().next().getName());
+            } else {
+                Assert.assertTrue(isElementPresent(By.name("new_group")));
+            }
         }
     }
 
 
     public void initContactModificationById(int id) {
         wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
-        // WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
-        // WebElement row = checkbox.findElement(By.xpath("./../../"));
-        // List<WebElement> cells = row.findElements(By.tagName("td"));
-        // cells.get(7).findElement(By.tagName("a")).click();
-
         // wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
     }
 

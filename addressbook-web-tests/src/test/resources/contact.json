@@ -9,10 +9,8 @@
     "group": "test1",
     "homePhone": "977-303",
     "workPhone": "",
-    "allPhones": "",
-    "allMail": "",
     "Address": "msk",
-    "photo": "",
-    "groups": []
+    "photo": "src\\\\test\\\\resources\\\\AvatarPhoto.jpg"
+
   }
 ]
