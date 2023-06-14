@@ -5,15 +5,19 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
 
 @XStreamAlias("contact")
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
+    @Id
+    @Column(name = "id")
     @XStreamOmitField
     private int id = Integer.MAX_VALUE;;
+
     @Expose
     @Column(name = "firstname")
     private String name;
@@ -69,11 +73,10 @@ public class ContactData {
     @Type(type = "text")
     private String Address;
 
-    @XStreamOmitField
+    @Expose
     @Column(name = "photo")
     @Type(type = "text")
-    transient private String photo;
-
+    private String photo;
 
     public String getMail2() {
         return mail2;
@@ -210,12 +213,15 @@ public class ContactData {
         ContactData that = (ContactData) o;
         return id == that.id &&
                 Objects.equals(name, that.name) &&
-                Objects.equals(firstname, that.firstname);
+                Objects.equals(firstname, that.firstname) &&
+                Objects.equals(mobileTelephone, that.mobileTelephone) &&
+                Objects.equals(homePhone, that.homePhone) &&
+                Objects.equals(workPhone, that.workPhone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, firstname);
+        return Objects.hash(id, name, firstname, mobileTelephone, homePhone, workPhone);
     }
 
     @Override
