@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.File;
 import java.util.Set;
@@ -30,7 +31,7 @@ public class ContactModificationTests extends TestBase {
         Contacts before = app.db().contacts();
         File photo = new File("src/test/resources/AvatarPhoto.jpg");
         ContactData modifiedContact = before.iterator().next();
-        ContactData contact = new ContactData().withId(modifiedContact.getId()).withGroup(modifiedContact.getGroup())
+        ContactData contact = new ContactData().withId(modifiedContact.getId())
                 .withAddress(modifiedContact.getAddress()).withMail2(modifiedContact.getMail2())
                 .withWorkPhone(modifiedContact.getWorkPhone()).withMail3(modifiedContact.getMail3())
                 .withName("marina").withFirstname("alieva").withMobileTelephone("+79773023365")

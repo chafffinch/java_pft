@@ -5,9 +5,14 @@
     "mobileTelephone": "977-302",
     "mail": "m@mail.ru",
     "mail2": "a@mail.ru",
+    "mail3": "",
     "group": "test1",
     "homePhone": "977-303",
+    "workPhone": "",
+    "allPhones": "",
+    "allMail": "",
     "Address": "msk",
-    "photo": "src\\test\\resources\\AvatarPhoto.jpg"
+    "photo": "",
+    "groups": []
   }
 ]
