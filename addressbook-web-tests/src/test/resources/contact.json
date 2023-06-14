@@ -12,5 +12,19 @@
     "Address": "msk",
     "photo": "src\\\\test\\\\resources\\\\AvatarPhoto.jpg"
 
+  },
+  {
+    "name": "name1",
+    "firstname": "firstname1",
+    "mobileTelephone": "977-303",
+    "mail": "m@mail.ru",
+    "mail2": "a@mail.ru",
+    "mail3": "",
+    "group": "test1",
+    "homePhone": "977-304",
+    "workPhone": "",
+    "Address": "msk",
+    "photo": "src\\\\test\\\\resources\\\\AvatarPhoto.jpg"
   }
+
 ]
