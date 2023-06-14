@@ -1,25 +1,40 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
+
+import java.util.*;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 public class GroupModificationTests extends TestBase {
 
-    @Test
-    public void testGroupModification() {
-        app.getNavigationHelper().gotoGroupPage();
-        int before = app.getGroupHelper().getGroupCount();
-        if (!app.getGroupHelper().isThereAGroup()) {
-            app.getGroupHelper().createGroup(new GroupData("test1", null, null));
+    @BeforeMethod
+    public void ensurePrecondition() {
+        app.goTo().groupPage();
+        if (app.db().groups().size() == 0) {
+            app.group().create(new GroupData().withName("test1"));
         }
-        app.getGroupHelper().selectGroup();
-        app.getGroupHelper().initGroupModification();
-        app.getGroupHelper().fillGroupForm(new GroupData("test1", "test2", "test3"));
-        app.getGroupHelper().submitGroupModification();
-        app.getGroupHelper().returnToGroupPage();
-        int after = app.getGroupHelper().getGroupCount();
-        Assert.assertEquals(after, before);
     }
+
+    @Test
+    public void testGroupModification(){
+        Groups before = app.db().groups();
+        GroupData modifiedGroup = before.iterator().next();
+        GroupData group = new GroupData()
+                .withId(modifiedGroup.getId()).withName("test1").withHeader("test2").withFooter("test3");
+        app.group().modify(group);
+        assertThat(app.group().count(), equalTo(before.size()));
+        Groups after = app.db().groups();
+        assertThat(after, equalTo(before.without(modifiedGroup).withAdded(group)));
+    }
+
 
 }

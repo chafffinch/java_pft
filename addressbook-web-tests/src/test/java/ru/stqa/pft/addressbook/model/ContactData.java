@@ -20,63 +20,63 @@ public class ContactData {
 
     @Expose
     @Column(name = "firstname")
-    private String name;
+    private String name = "";
 
     @Expose
     @Column(name = "lastname")
-    private String firstname;
+    private String firstname = "";
 
     @Expose
     @Column(name = "mobile")
     @Type(type = "text")
-    private String mobileTelephone;
+    private String mobileTelephone = "";
 
     @Expose
     @Column(name = "email")
     @Type(type = "text")
-    private String mail;
+    private String mail = "";
 
     @Expose
     @Column(name = "email2")
     @Type(type = "text")
-    private String mail2;
+    private String mail2 = "";
 
     @Expose
     @Column(name = "email3")
     @Type(type = "text")
-    private String mail3;
+    private String mail3 = "";
 
     @Expose
     @Transient
-    private String group;
+    private String group = "";
 
     @Expose
     @Column(name = "home")
     @Type(type = "text")
-    private String homePhone;
+    private String homePhone = "";
 
     @Expose
     @Column(name = "work")
     @Type(type = "text")
-    private String workPhone;
+    private String workPhone = "";
 
     @Expose
     @Transient
-    private String allPhones;
+    private String allPhones = "";
 
     @Expose
     @Transient
-    private String allMail;
+    private String allMail = "";
 
     @Expose
     @Column(name = "address")
     @Type(type = "text")
-    private String Address;
+    private String Address = "";
 
     @Expose
     @Column(name = "photo")
     @Type(type = "text")
-    private String photo;
+    private String photo = "";
 
     public String getMail2() {
         return mail2;
@@ -227,9 +227,17 @@ public class ContactData {
     @Override
     public String toString() {
         return "ContactData{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", firstname='" + firstname + '\'' +
+                ", mobileTelephone='" + mobileTelephone + '\'' +
+                ", mail='" + mail + '\'' +
+                ", mail2='" + mail2 + '\'' +
+                ", mail3='" + mail3 + '\'' +
+                ", group='" + group + '\'' +
+                ", homePhone='" + homePhone + '\'' +
+                ", workPhone='" + workPhone + '\'' +
+                ", Address='" + Address + '\'' +
                 '}';
     }
 
