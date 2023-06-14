@@ -71,7 +71,7 @@ public class ContactDataGenerator {
     private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
         try (Writer writer = new FileWriter(file)) {
             for (ContactData contact : contacts) {
-                writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getName(), contact.getFirstname()
+                writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getName(), contact.getFirstname()
                         , contact.getMobileTelephone(), contact.getGroup(), contact.getHomePhone()
                         , contact.getAddress(), contact.getMail(), contact.getMail2()));
             }
@@ -80,12 +80,14 @@ public class ContactDataGenerator {
 
     private List<ContactData> generateContact(int count) {
         List<ContactData> contacts = new ArrayList<ContactData>();
+        File photo = new File("src/test/resources/AvatarPhoto.jpg");
         for (int i = 0; i < count; i++) {
             contacts.add(new ContactData().withName(String.format("name%s", i))
                     .withFirstname(String.format("firstname%s", i))
                     .withMobileTelephone(String.format("977-302%s", i)).withGroup("test1")
                     .withHomePhone(String.format("977-303", i)).withAddress(String.format("msk%s", i))
-                    .withMail(String.format("a%s@mail.ru", i)).withMail2(String.format("m%s@mail.ru", i)));
+                    .withMail(String.format("a%s@mail.ru", i)).withMail2(String.format("m%s@mail.ru", i))
+                    .withPhoto(new File("src/test/resources/AvatarPhoto.jpg")));
         }
         return contacts;
     }

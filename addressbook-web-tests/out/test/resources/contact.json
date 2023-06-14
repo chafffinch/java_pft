@@ -7,6 +7,7 @@
     "mail2": "a@mail.ru",
     "group": "test1",
     "homePhone": "977-303",
-    "Address": "msk"
+    "Address": "msk",
+    "photo": "src\\test\\resources\\AvatarPhoto.jpg"
   }
 ]
