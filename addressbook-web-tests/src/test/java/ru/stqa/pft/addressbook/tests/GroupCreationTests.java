@@ -36,6 +36,7 @@ public class GroupCreationTests extends TestBase {
             return groups.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
         }
     }
+
     @DataProvider
     public Iterator<Object[]> validGroupsFromJson() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
@@ -72,6 +73,7 @@ public class GroupCreationTests extends TestBase {
         assertThat(app.group().count(), equalTo(before.size()));
         Groups after = app.db().groups();
         assertThat(after, equalTo(before));
+        verifyGroupListInUI();
     }
 
 }
