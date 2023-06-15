@@ -1,6 +1,6 @@
 package ru.stqa.pft.mantis.appmanager;
 
-
+import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -35,7 +35,7 @@ public class HttpSession {
         post.setEntity(new UrlEncodedFormEntity(params));
         CloseableHttpResponse response = httpclient.execute(post);
         String body = geTextFrom(response);
-        return body.contains(String.format("<span class=\"user-info\">%s</span>", username));
+        return body.contains(String.format("<span class=\"italic\">%s</span>", username));
     }
 
     private String geTextFrom(CloseableHttpResponse response) throws IOException {
@@ -50,6 +50,6 @@ public class HttpSession {
         HttpGet get = new HttpGet(app.getProperty("web.baseUrl") + "/index.php");
         CloseableHttpResponse response = httpclient.execute(get);
         String body = geTextFrom(response);
-        return body.contains(String.format("<span class=\"user-info\">%s</span>", username));
+        return body.contains(String.format("<span class=\"italic\">%s</span>", username));
     }
 }
