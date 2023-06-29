@@ -1,244 +1,37 @@
 package ru.stqa.pft.addressbook.model;
 
-import com.google.gson.annotations.Expose;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
-import org.hibernate.annotations.Type;
-
-import javax.persistence.*;
-import java.io.File;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
-@XStreamAlias("contact")
-@Entity
-@Table(name = "addressbook")
 public class ContactData {
-    @Id
-    @Column(name = "id")
-    @XStreamOmitField
-    private int id = Integer.MAX_VALUE;;
+    private final String firstname;
+    private final String lastname;
+    private final String address;
+    private final String email;
+    private String group;
 
-    @Expose
-    @Column(name = "firstname")
-    private String name = "";
-
-    @Expose
-    @Column(name = "lastname")
-    private String firstname = "";
-
-    @Expose
-    @Column(name = "mobile")
-    @Type(type = "text")
-    private String mobileTelephone = "";
-
-    @Expose
-    @Column(name = "email")
-    @Type(type = "text")
-    private String mail = "";
-
-    @Expose
-    @Column(name = "email2")
-    @Type(type = "text")
-    private String mail2 = "";
-
-    @Expose
-    @Column(name = "email3")
-    @Type(type = "text")
-    private String mail3 = "";
-
-    @Expose
-    @Column(name = "home")
-    @Type(type = "text")
-    private String homePhone = "";
-
-    @Expose
-    @Column(name = "work")
-    @Type(type = "text")
-    private String workPhone = "";
-
-    @Transient
-    private String allPhones = "";
-
-    @Transient
-    private String allMail = "";
-
-    @Expose
-    @Column(name = "address")
-    @Type(type = "text")
-    private String Address = "";
-
-    @Expose
-    @Column(name = "photo")
-    @Type(type = "text")
-    private String photo;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "address_in_groups",
-            joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
-    private Set<GroupData> groups = new HashSet<GroupData>();
-
-    public String getMail2() {
-        return mail2;
-    }
-
-    public ContactData withMail2(String mail2) {
-        this.mail2 = mail2;
-        return this;
-    }
-
-    public String getMail3() {
-        return mail3;
-    }
-
-    public ContactData withMail3(String mail3) {
-        this.mail3 = mail3;
-        return this;
-    }
-
-    public String getAllMail() {
-        return allMail;
-    }
-
-    public ContactData withAllMail(String allMail) {
-        this.allMail = allMail;
-        return this;
-    }
-
-    public String getAddress() {
-        return Address;
-    }
-
-    public ContactData withAddress(String address) {
-        Address = address;
-        return this;
-    }
-
-    public File getPhoto() {
-        return new File(photo);
-    }
-
-    public ContactData withPhoto(File photo) {
-        this.photo = photo.getPath();
-        return this;
-    }
-
-
-
-    public String getAllPhones() {
-        return allPhones;
-    }
-
-    public ContactData withAllPhones(String allPhones) {
-        this.allPhones = allPhones;
-        return this;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getHomePhone() {
-        return homePhone;
-    }
-
-    public String getWorkPhone() {
-        return workPhone;
-    }
-
-    public ContactData withId(int id) {
-        this.id = id;
-        return this;
-    }
-
-    public ContactData withName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public ContactData withFirstname(String firstname) {
+    public ContactData(String firstname, String lastname, String address, String email) {
         this.firstname = firstname;
-        return this;
-    }
+        this.lastname = lastname;
+        this.address = address;
+        this.email = email;
 
-    public ContactData withMobileTelephone(String mobileTelephone) {
-        this.mobileTelephone = mobileTelephone;
-        return this;
-    }
-
-    public ContactData withMail(String mail) {
-        this.mail = mail;
-        return this;
-    }
-
-    public ContactData withWorkPhone(String workPhone) {
-        this.workPhone = workPhone;
-        return this;
-    }
-
-    public ContactData withHomePhone(String homePhone) {
-        this.homePhone = homePhone;
-        return this;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getFirstname() {
         return firstname;
     }
 
-    public String getMobileTelephone() {
-        return mobileTelephone;
+    public String getLastname() {
+        return lastname;
     }
 
-    public String getMail() {
-        return mail;
+    public String getAddress() {
+        return address;
     }
 
-    public Groups getGroups() {
-        return new Groups(groups);
+    public String getEmail() {
+        return email;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ContactData that = (ContactData) o;
-        return id == that.id &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(firstname, that.firstname) &&
-                Objects.equals(mobileTelephone, that.mobileTelephone) &&
-                Objects.equals(homePhone, that.homePhone) &&
-                Objects.equals(workPhone, that.workPhone);
+    public String getGroup() {
+        return group;
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, firstname, mobileTelephone, homePhone, workPhone);
-    }
-
-    @Override
-    public String toString() {
-        return "ContactData{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", mobileTelephone='" + mobileTelephone + '\'' +
-                ", mail='" + mail + '\'' +
-                ", mail2='" + mail2 + '\'' +
-                ", mail3='" + mail3 + '\'' +
-                ", homePhone='" + homePhone + '\'' +
-                ", workPhone='" + workPhone + '\'' +
-                ", Address='" + Address + '\'' +
-                '}';
-    }
-
-    public ContactData inGroup(GroupData group) {
-        groups.add(group);
-        return this;
-    }
-
 }

@@ -1,32 +1,25 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
 
+@Test
 public class ContactDeletionTests extends TestBase{
 
-    @BeforeMethod
-    public void ensurePrecondition() {
-        app.goTo().homePage();
-        if (app.db().contacts().size() == 0) {
-            app.contact().create(new ContactData().withName("marina").withFirstname("alieva"), true);
-        }
-    }
 
-    @Test
-    public void testContactDeletion() throws Exception {
-        Contacts before = app.db().contacts();
-        ContactData deletedContact = before.iterator().next();
-        app.contact().delete(deletedContact);
-        assertThat(app.contact().count(), equalTo(before.size() - 1));
-        Contacts after = app.db().contacts();
-        assertThat(after, equalTo(before.without(deletedContact)));
-        verifyContactListInUI();
+    public void testContactDeletion() {
+        app.getNavigationHelper().gotoHome();
+        if ( ! app.getContactHelper().isThereAContact()){
+            app.getNavigationHelper().gotoContactPage();
+            app.getContactHelper().addContact();
+        }
+        app.getContactHelper().selectContact();
+        app.getContactHelper().deleteSelectContact();
+        app.wd.switchTo().alert().accept();
+        app.getNavigationHelper().gotoContactPage();
+
     }
 
 
