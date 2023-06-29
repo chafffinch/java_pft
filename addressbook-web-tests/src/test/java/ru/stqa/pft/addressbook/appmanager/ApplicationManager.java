@@ -4,9 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.Browser;
+import org.openqa.selenium.remote.BrowserType;
+
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
     public WebDriver wd;
@@ -22,16 +24,17 @@ public class ApplicationManager {
     }
 
     public void init() {
-        if (browser == Browser.FIREFOX.browserName()){
+        if (browser == BrowserType.FIREFOX){
             wd = new FirefoxDriver();
         }
-        else if (browser == Browser.CHROME.browserName()){
+        else if (browser == BrowserType.CHROME){
             wd = new ChromeDriver();
         }
-        else if (browser == Browser.IE.browserName()){
+        else if (browser == BrowserType.IE){
             wd = new InternetExplorerDriver();
         }
-        wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        wd.get("http://localhost/addressbook/");
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
