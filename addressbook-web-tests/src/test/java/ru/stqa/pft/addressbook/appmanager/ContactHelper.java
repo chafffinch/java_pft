@@ -50,7 +50,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("email2"), contactData.getMail2());
         type(By.name("email3"), contactData.getMail3());
         type(By.name("address"), contactData.getAddress());
-        attach(By.name("photo"), contactData.getPhoto());
+
 
         if (creation) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
