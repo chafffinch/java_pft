@@ -1,45 +1,45 @@
 //package ru.stqa.pft.addressbook.tests;
 //
-//import org.testng.annotations.BeforeClass;
-//
 //import org.testng.annotations.Test;
 //import ru.stqa.pft.addressbook.model.ContactData;
-//import ru.stqa.pft.addressbook.model.GroupData;
-//import java.io.File;
-//import static org.hamcrest.MatcherAssert.assertThat;
-//import static org.hamcrest.Matchers.hasItem;
+//
+//import java.util.Arrays;
+//import java.util.Collection;
+//import java.util.stream.Collectors;
+//
+//import static org.hamcrest.CoreMatchers.*;
+//import static org.hamcrest.MatcherAssert.*;
 //
 //public class ContactAddToGroupTest extends TestBase {
+//    @Test
+//    public void testContactPhones() {
+//        app.goTo().home();
+//        ContactData contact = app.contact().allContacts().iterator().next();
+//        ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 //
-//    @BeforeClass
-//    public void ensurePreconditions() {
-//        if (app.db().groups().size() == 0) {
-//            app.goTo().groupPage();
-//            app.group().create(new GroupData().withName("test1"));
-//        }
-//
-//        if (app.db().contacts().size() == 0) {
-//            File photo = new File("src/test/resources/AvatarPhoto.jpg");
-//            app.goTo().homePage();
-//            app.contact().create(new ContactData().withName("marina")
-//                    .withFirstname("alieva").withPhoto(photo), true);
-//        }
+//        assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
+//        assertThat(contact.getNewAddress(), equalTo(contactInfoFromEditForm.getNewAddress()));
+//        assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
 //    }
 //
 //
-//    @Test
-//    public void testContactAddToGroup() {
-//        ContactData contactBefore = app.db().contacts().iterator().next();
-//        GroupData groupBefore = app.db().groups().iterator().next();
-//        app.goTo().homePage();
-//        app.contact().addToGroup(contactBefore, groupBefore);
-//        app.goTo().homePage();
-//        app.contact().showAllContact();
+//    private String mergePhones(ContactData contact) {
+//        return   Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone()).stream()
+//                .filter(s -> ! s.equals("")).map(ContactPhoneTests::cleaned).collect(Collectors.joining("\n"));
 //
-//        ContactData contactAfter = app.db().contacts().iterator().next();
-//        GroupData groupAfter= app.db().groups().iterator().next();
+//    }
 //
-//        assertThat(contactAfter.getGroups(), hasItem(groupBefore));
-//        assertThat(groupAfter.getContacts(), hasItem(contactBefore));
+//    private String mergeEmails(ContactData contact) {
+//        return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
+//                .stream().filter((s -> !s.equals("")))
+//                .map(ContactPhoneTests::cleanedAe)
+//                .collect(Collectors.joining("\n"));
+//    }
+//    public static String cleanedAe(String address) {
+//        return address.replaceAll("\\s", "");
+//    }
+//
+//    public static String cleaned(String phone) {
+//        return  phone.replaceAll("\\s","").replaceAll("[-()]","");
 //    }
 //}
