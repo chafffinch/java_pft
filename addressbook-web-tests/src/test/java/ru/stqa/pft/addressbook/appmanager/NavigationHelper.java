@@ -31,4 +31,8 @@ public class NavigationHelper extends HelperBase{
         }
         click(By.linkText("home"));
     }
+
+    public void homePageAfterAddedGroup() {
+        wd.findElement(By.cssSelector("a[href='./']")).click();
+    }
 }

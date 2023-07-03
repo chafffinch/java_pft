@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ContactMailAndAddressTests extends TestBase{
+public class ContactMailAndAddressTests extends TestBase {
 
     @BeforeMethod
     public void ensurePrecondition() {
@@ -26,20 +26,31 @@ public class ContactMailAndAddressTests extends TestBase{
     public void testContactTelephone() {
         app.goTo().homePage();
         ContactData contact = app.contact().all().iterator().next();
-        ContactData contactInfoFoEditForm = app.contact().infoFromEditForm(contact);
+        ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-        assertThat(contact.getAllMail(), equalTo(mergeMail(contactInfoFoEditForm)));
-        assertThat(contact.getAddress(), equalTo(megaAddress(contactInfoFoEditForm)));
+        assertThat(contact.getAllMail(), equalTo(mergeMail(contactInfoFromEditForm)));
+        assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
+        assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
+    }
+
+    private String mergePhones(ContactData contact) {
+        return Arrays.asList(contact.getHomePhone(), contact.getAllPhones(), contact.getWorkPhone()).stream()
+                .filter(s -> !s.equals("")).map(ContactMailAndAddressTests::cleaned).collect(Collectors.joining("\n"));
+
     }
 
     private String mergeMail(ContactData contact) {
         return Arrays.asList(contact.getMail(), contact.getMail2(), contact.getMail3())
                 .stream().filter((s) -> ! s.equals(""))
-                .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining("/n"));
     }
-    private String megaAddress(ContactData contact) {
-        return Arrays.asList(contact.getAddress())
-                .stream().filter((s) -> ! s.equals(""))
-                .collect(Collectors.joining("\n"));
+
+    public static String cleanedAe(String address) {
+        return address.replaceAll("\\s", "");
     }
+
+    public static String cleaned(String phone) {
+        return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
+    }
+
 }

@@ -60,10 +60,6 @@ public class ContactData {
         return allMail;
     }
 
-    public ContactData withAllMail(String allMail) {
-        this.allMail = allMail;
-        return this;
-    }
 
     public String getAddress() {
         return Address;
@@ -72,10 +68,6 @@ public class ContactData {
     public ContactData withAddress(String address) {
         Address = address;
         return this;
-    }
-
-    public File getPhoto() {
-        return photo;
     }
 
     public ContactData withPhoto(File photo) {
