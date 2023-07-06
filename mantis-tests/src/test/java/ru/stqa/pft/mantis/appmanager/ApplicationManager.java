@@ -1,8 +1,8 @@
 package ru.stqa.pft.mantis.appmanager;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
@@ -12,19 +12,19 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.MatchResult;
 
 public class ApplicationManager {
     private final Properties properties;
     private WebDriver wd;
+
+    private String browser;
     private RegistrationHelper registrationHelper;
     private FtpHelper ftp;
     private MailHelper mailHelper;
     private JamesHelper jamesHelper;
-    private SessionHelper session;
     private DbHelper dbHelper;
-    private AdminHelper adminHelper;
 
-    private String browser;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -32,28 +32,20 @@ public class ApplicationManager {
     }
 
     public void init() throws IOException {
-        String target = System.getProperty("target", "local");
-        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties",target))));
-
         dbHelper = new DbHelper();
 
-        if (browser.equals(BrowserType.FIREFOX)) {
-            wd = new FirefoxDriver();
-        } else if (browser.equals(BrowserType.CHROME)) {
-            wd = new ChromeDriver();
-        } else if (browser.equals(BrowserType.EDGE)) {
-            wd = new EdgeDriver();
-            wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-            wd.get(properties.getProperty("web.baseUrl"));
-        }
+        String target = System.getProperty("target", "local");
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
     }
 
     public void stop() {
-        if (wd != null){
-            wd.quit();}
+        if (wd != null) {
+            wd.quit();
+        }
     }
 
-    public HttpSession newSession (){
+
+    public HttpSession newSession() {
         return new HttpSession(this);
     }
 
@@ -63,7 +55,7 @@ public class ApplicationManager {
 
     public RegistrationHelper registration() {
         if (registrationHelper == null) {
-            registrationHelper =  new RegistrationHelper(this);
+            registrationHelper = new RegistrationHelper(this);
         }
         return registrationHelper;
     }
@@ -79,47 +71,38 @@ public class ApplicationManager {
         if (wd == null) {
             if (browser.equals(BrowserType.FIREFOX)) {
                 wd = new FirefoxDriver();
-            } else if (browser.equals(BrowserType.CHROME)){
+            } else if (browser.equals(BrowserType.CHROME)) {
                 wd = new ChromeDriver();
             } else if (browser.equals(BrowserType.IE)) {
                 wd = new InternetExplorerDriver();
             }
-            wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+            wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             wd.get(properties.getProperty("web.baseUrl"));
         }
-
         return wd;
     }
 
-    public MailHelper mail(){
+    public MailHelper mail() {
         if (mailHelper == null) {
             mailHelper = new MailHelper(this);
         }
         return mailHelper;
     }
 
-    public JamesHelper james(){
+    public JamesHelper james() {
         if (jamesHelper == null) {
             jamesHelper = new JamesHelper(this);
         }
         return jamesHelper;
     }
 
-    public SessionHelper session(){
-        if (session == null) {
-            session = new SessionHelper(this);
-        }
-        return session;
+    public ResetPasswordHelper resetPassword() {
+        return new ResetPasswordHelper(this);
     }
 
     public DbHelper db() {
         return dbHelper;
     }
 
-    public AdminHelper admin() {
-        if (adminHelper == null) {
-            adminHelper = new AdminHelper(this);
-        }
-        return adminHelper;
-    }
+
 }

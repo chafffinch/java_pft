@@ -36,22 +36,12 @@ public class ChangePasswordTests extends TestBase {
         for (WebElement element : elements) {
             element.findElement(By.xpath(".//ul//li[6]")).click();
         }
-
-
         app.getDriver().findElement(By.linkText("manage_users_link")).click();
-
         long now = System.currentTimeMillis();
-
-        
         Set<ContactData> contacts = app.db().contacts();
         ContactData contact = contacts.iterator().next();
-
-
         app.getDriver().findElement(By.linkText(contact.getUsername())).click();
-
         app.getDriver().findElement(By.cssSelector("input[value='Reset Password']")).click();
-
-
         String email = contact.getEmail();
         List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
         String confirmationLink = findConfirmationLink(mailMessages, email);
