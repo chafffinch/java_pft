@@ -1,39 +1,35 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.hamcrest.MatcherAssert;
-import org.testng.Assert;
+import org.hamcrest.CoreMatchers;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
-
-import java.util.Set;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.testng.Assert.assertEquals;
 
 public class GroupModificationTests extends TestBase {
-    @BeforeMethod
-    public  void ensurePrecondition() {
-        app.goTo().groupPage();
 
-        if (app.group().all().size() == 0) {
+    @BeforeMethod
+    public void ensurePreconditions(){
+        if (app.group().all().size() == 0){
+            app.GoTo().GroupPage();
             app.group().create(new GroupData().withName("test1"));
         }
     }
     @Test
-    public void testGroupModification() {
-        Groups before = app.group().all();
+    public void testGroupModification() throws Exception {
+        Groups before =  app.db().groups();
         GroupData modifiedGroup = before.iterator().next();
-        int index = before.size() - 1;
-        GroupData group = new GroupData()
-                .withId(modifiedGroup.getId()).withName("test1").withHeader("test2").withFooter("test3");
-        app.group().modify( group);
-        assertThat(app.group().count(),equalTo(before.size()));
-        Groups after = app.group().all();
-        assertThat(after, equalTo(before.without(modifiedGroup).withAdded(group)));
+        GroupData group = new GroupData().
+                withId(modifiedGroup.getId()).withName("test1").withHeader("test2").withFooter("test3");
+        app.GoTo().GroupPage();
+        app.group().modify(group);
+        assertThat(app.group().Count(), equalTo(before.size())); //не нужная проверка (выполняется дольше)
+        Groups after =  app.db().groups();
+        assertThat(after, CoreMatchers.equalTo(before.without(modifiedGroup).withAdded(group)));
+        verifyGroupListInUI();
     }
-
 
 }

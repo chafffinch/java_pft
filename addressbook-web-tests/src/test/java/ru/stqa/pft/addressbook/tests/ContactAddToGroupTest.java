@@ -1,45 +1,42 @@
-//package ru.stqa.pft.addressbook.tests;
-//
-//import org.testng.annotations.Test;
-//import ru.stqa.pft.addressbook.model.ContactData;
-//
-//import java.util.Arrays;
-//import java.util.Collection;
-//import java.util.stream.Collectors;
-//
-//import static org.hamcrest.CoreMatchers.*;
-//import static org.hamcrest.MatcherAssert.*;
-//
-//public class ContactAddToGroupTest extends TestBase {
-//    @Test
-//    public void testContactPhones() {
-//        app.goTo().home();
-//        ContactData contact = app.contact().allContacts().iterator().next();
-//        ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
-//
-//        assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
-//        assertThat(contact.getNewAddress(), equalTo(contactInfoFromEditForm.getNewAddress()));
-//        assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
-//    }
-//
-//
-//    private String mergePhones(ContactData contact) {
-//        return   Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone()).stream()
-//                .filter(s -> ! s.equals("")).map(ContactPhoneTests::cleaned).collect(Collectors.joining("\n"));
-//
-//    }
-//
-//    private String mergeEmails(ContactData contact) {
-//        return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
-//                .stream().filter((s -> !s.equals("")))
-//                .map(ContactPhoneTests::cleanedAe)
-//                .collect(Collectors.joining("\n"));
-//    }
-//    public static String cleanedAe(String address) {
-//        return address.replaceAll("\\s", "");
-//    }
-//
-//    public static String cleaned(String phone) {
-//        return  phone.replaceAll("\\s","").replaceAll("[-()]","");
-//    }
-//}
+package ru.stqa.pft.addressbook.tests;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
+
+import java.io.File;
+
+import static org.testng.AssertJUnit.assertTrue;
+
+public class ContactAddToGroupTest extends TestBase {
+
+    File photo = new File("src/test/resources/AvatarPhoto.jpg");
+
+    @BeforeMethod
+    public void ensurePreconditions() {
+        if (app.db().contacts().size() == 0 | app.db().groups().size() == 0 | app.db().verifyContactNotInGroup().size() != 0) { //данные из базы (.db().)
+            app.createGroupIfNot();
+            ContactData contact = new ContactData();
+            app.contact().createWithoutGroup(contact.withFirstName("000").withLastName("000").withAddress("000")
+                    .withEmail("000").withEmail2("000").withEmail3("000")
+                    .withHomePhone("000").withMobilePhone("000").withWorkPhone("000"));
+            app.contact().gotoHomePage();
+        }
+    }
+
+    @Test
+    public void testAddContactInGroup() {
+        ContactData before = app.db().contactWithoutGroup();
+        Groups groups = app.db().groups();
+        GroupData group = groups.iterator().next();
+        app.contact().gotoHomePage();
+        app.contact().selectContactWithoutGroup(before);
+        app.contact().selectGroup(group);
+        app.contact().addContactToGroup();
+        ContactData after = app.db().contactById(before.getId());
+        assertTrue(after.getGroups().contains(group));
+        verifyContactListInUI();
+    }
+}

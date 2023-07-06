@@ -1,0 +1,6 @@
+449  [main] DEBUG org.testng.TestNG - suiteXmlPath: "C:\Users\furry\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml"
+762  [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\furry\AppData\Local\JetBrains\IdeaIC2023.1\temp-testng-customsuite.xml
+
+5422 [main] INFO  r.s.pft.addressbook.tests.TestBase - Start test testContactPhoneswith parameters []
+7490 [main] INFO  r.s.pft.addressbook.tests.TestBase - Stop test testContactPhones
