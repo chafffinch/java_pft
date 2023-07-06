@@ -1,3 +1,4 @@
+/*
 package ru.stqa.pft.mantis.model;
 
 import com.google.common.collect.ForwardingSet;
@@ -26,3 +27,5 @@ public class Users extends ForwardingSet<UserData> {
         return delegate;
     }
 }
+
+*/

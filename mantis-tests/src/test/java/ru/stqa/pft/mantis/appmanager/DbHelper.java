@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class DbHelper {
 
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
     public DbHelper() {
 
@@ -28,9 +28,13 @@ public class DbHelper {
     public Set<ContactData> contacts() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<ContactData> contacts = session.createQuery("from ContactData where enabled = 1 and username <> 'administrator'").list();
+        List contacts = session.createQuery("from ContactData where enabled = 1 and username <> 'administrator'").list();
         session.getTransaction().commit();
         session.close();
         return new HashSet<>(contacts);
     }
 }
+
+
+
+

@@ -46,3 +46,4 @@ public class RegistrationTests extends TestBase{
         app.mail().stop();
     }
 }
+

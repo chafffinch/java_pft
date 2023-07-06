@@ -2,9 +2,9 @@ package ru.stqa.pft.mantis.appmanager;
 
 import org.subethamail.wiser.Wiser;
 import org.subethamail.wiser.WiserMessage;
-import ru.lanwen.verbalregex.VerbalExpression;
 import ru.stqa.pft.mantis.model.MailMessage;
 
+import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class MailHelper {
+
     private ApplicationManager app;
     private final Wiser wiser;
 
@@ -23,7 +24,7 @@ public class MailHelper {
     public List<MailMessage> waitForMail(int count, long timeout) throws MessagingException, IOException {
         long start = System.currentTimeMillis();
         while (System.currentTimeMillis() < start + timeout) {
-            if (wiser.getMessages().size()>= count) {
+            if (wiser.getMessages().size() >= count) {
                 return wiser.getMessages().stream().map((m) -> toModelMail(m)).collect(Collectors.toList());
             }
             try {
@@ -32,18 +33,11 @@ public class MailHelper {
                 e.printStackTrace();
             }
         }
-        throw new Error("No mail: ('')");
+        throw new Error("No mail :(");
     }
 
-    public String findConformationLink(List<MailMessage> mailMessages, String email) {
-        MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
-        VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
-        return regex.getText(mailMessage.text);
-    }
-
-    public static MailMessage toModelMail(WiserMessage m){
-        try
-        {
+    public static MailMessage toModelMail(WiserMessage m) {
+        try {
             MimeMessage mm = m.getMimeMessage();
             return new MailMessage(mm.getAllRecipients()[0].toString(), (String) mm.getContent());
         } catch (MessagingException e) {
@@ -55,11 +49,12 @@ public class MailHelper {
         }
     }
 
-    public void start(){
+    public void start() {
         wiser.start();
     }
 
-    public void stop(){
+    public void stop() {
         wiser.stop();
     }
 }
+

@@ -1,3 +1,4 @@
+/*
 package ru.stqa.pft.mantis.model;
 
 import javax.persistence.*;
@@ -60,3 +61,5 @@ public class UserData {
         return Objects.hash(getId(), getUsername(), getEmail());
     }
 }
+
+*/

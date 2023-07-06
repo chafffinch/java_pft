@@ -79,3 +79,4 @@ public class ContactData {
         return Objects.hash(id, username, password, email);
     }
 }
+
