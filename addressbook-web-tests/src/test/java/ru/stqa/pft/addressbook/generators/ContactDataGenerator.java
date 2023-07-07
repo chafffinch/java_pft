@@ -8,6 +8,7 @@ import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,33 +17,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContactDataGenerator {
-
     @Parameter(names = "-c", description = "Contact count")
     public int count;
-    @Parameter(names = "-f", description = "Target file")
+
+    @Parameter (names = "-f", description = "Target file")
     public String file;
-    @Parameter(names = "-d", description = "Data format")
+
+    @Parameter (names = "-d", description = "Data format")
+    //-f src/test/resources/contact.json -c 3 -d json
     public String format;
 
-    public static void main (String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         ContactDataGenerator generator = new ContactDataGenerator();
         JCommander jCommander = new JCommander(generator);
         try {
             jCommander.parse(args);
         } catch (ParameterException ex) {
             jCommander.usage();
+            return;
         }
         generator.run();
     }
 
     private void run() throws IOException {
-        List<ContactData> contacts = generateContacts(count);
-        if (format.equals("xml")){
-            saveAsXml(contacts, new File(file)); //Сохраняем в XML формат
+        List<ContactData> contacts = generateContact(count);
+        if (format.equals("csv")) {
+            saveAsCsv(contacts, new File(file));
+        } else if (format.equals("xml")) {
+            saveAsXml(contacts, new File(file));
         } else if (format.equals("json")) {
-            saveAsJson(contacts, new File(file)); //Сохраняем в JSon формат (-f src/test/resources/contacts.json -c 3 -d json)
+            saveAsJson(contacts, new File(file));
         } else {
-            System.out.println("Unrecognized format " + format);
+            System.out.println("Я не знаю такой формат" + format);
         }
     }
 
@@ -63,14 +69,27 @@ public class ContactDataGenerator {
         }
     }
 
-    private  List<ContactData> generateContacts(int count) {
+    private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
+        try (Writer writer = new FileWriter(file)) {
+            for (ContactData contact : contacts) {
+                writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getName(), contact.getFirstname()
+                        , contact.getMobileTelephone(), contact//.getGroup()
+                        , contact.getHomePhone()
+                        , contact.getAddress(), contact.getMail(), contact.getMail2()));
+            }
+        }
+    }
+
+    private List<ContactData> generateContact(int count) {
         List<ContactData> contacts = new ArrayList<ContactData>();
+        File photo = new File("src/test/resources/AvatarPhoto.jpg");
         for (int i = 0; i < count; i++) {
-            contacts.add(new ContactData().withFirstName(String.format("name %s", i))
-                    .withLastName(String.format("lastname %s", i)).withAddress(String.format("address %s", i))
-                    .withEmail(String.format("email %s", i)).withEmail2(String.format("email2 %s", i)).withEmail3(String.format("email3 %s", i))
-                    .withHomePhone(String.format("111%s", "")).withMobilePhone(String.format("+7 (977)%s", ""))
-                    .withWorkPhone(String.format("+7 (916)%s", "")));
+            contacts.add(new ContactData().withName(String.format("name%s", i))
+                    .withFirstname(String.format("firstname%s", i))
+                    .withMobileTelephone(String.format("977-302%s", i))
+                    .withHomePhone(String.format("977-303", i)).withAddress(String.format("msk, dom%s", i))
+                    .withMail(String.format("m%s@mail.ru", i)).withMail2(String.format("a%s@mail.ru", i))
+                    .withPhoto(new File("src/test/resources/AvatarPhoto.jpg")));
         }
         return contacts;
     }

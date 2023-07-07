@@ -1,27 +1,30 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
-import ru.stqa.pft.addressbook.model.GroupData;
+
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
-
+import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
     private final Properties properties;
     WebDriver wd;
 
+    private ContactHelper contactHelper;
     private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
-    private ContactHelper contactHelper;
-    private final String browser;
+    private String browser;
     private DbHelper dbHelper;
 
     public ApplicationManager(String browser) {
@@ -39,34 +42,38 @@ public class ApplicationManager {
             wd = new FirefoxDriver();
         } else if (browser.equals(BrowserType.CHROME)) {
             wd = new ChromeDriver();
-        } else if (browser.equals (BrowserType.EDGE)) {
-            wd = new EdgeDriver();
+        } else if (browser.equals(BrowserType.IE)) {
+            wd = new InternetExplorerDriver();
         }
-        //    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         wd.get(properties.getProperty("web.baseUrl"));
         groupHelper = new GroupHelper(wd);
-        contactHelper = new ContactHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
-        sessionHelper.Login(properties.getProperty("web.baseUrl"), properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
+        contactHelper = new ContactHelper(wd);
+        sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
+        navigationHelper.gotoNewContactPage();
     }
 
-    public void createGroupIfNot() {
-        GoTo().GroupPage();
-        if (db().groups().size() == 0) {
-            group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
-        }
-    }
 
     public void stop() {
         wd.quit();
+    }
+
+    public boolean isElementPresent(By by) {
+        try {
+            wd.findElement(by);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 
     public GroupHelper group() {
         return groupHelper;
     }
 
-    public NavigationHelper GoTo() {
+    public NavigationHelper goTo() {
         return navigationHelper;
     }
 
@@ -78,3 +85,4 @@ public class ApplicationManager {
         return dbHelper;
     }
 }
+

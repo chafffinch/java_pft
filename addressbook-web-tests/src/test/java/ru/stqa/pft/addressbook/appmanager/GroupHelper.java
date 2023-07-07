@@ -3,25 +3,24 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import ru.stqa.pft.addressbook.model.Groups;
 import ru.stqa.pft.addressbook.model.GroupData;
-
+import ru.stqa.pft.addressbook.model.Groups;
 import java.util.List;
 
-public class GroupHelper extends HelperBase{
+
+public class GroupHelper extends HelperBase {
 
     public GroupHelper(WebDriver wd) {
         super(wd);
     }
 
     public void returnToGroupPage() {
-        click(By.linkText("group page"));
-    }
-    public void returnToGroup() {
         click(By.linkText("groups"));
     }
+
     public void submitGroupCreation() {
         click(By.name("submit"));
+
     }
 
     public void fillGroupForm(GroupData groupData) {
@@ -34,12 +33,12 @@ public class GroupHelper extends HelperBase{
         click(By.name("new"));
     }
 
-    public void deleteSelectedGroups() {
+    public void DeleteSelectedGroups() {
         click(By.name("delete"));
     }
 
     public void selectGroupById(int id) {
-        wd.findElement(By.cssSelector("input[value='"+id +"']")).click();
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
     public void initGroupModification() {
@@ -54,14 +53,7 @@ public class GroupHelper extends HelperBase{
         initGroupCreation();
         fillGroupForm(group);
         submitGroupCreation();
-        groupCache = null;
-        returnToGroup();
-    }
-
-    public void delete(GroupData group) {
-        selectGroupById(group.getId());
-        deleteSelectedGroups();
-        groupCache = null;
+        groupCash = null;
         returnToGroupPage();
     }
 
@@ -70,31 +62,42 @@ public class GroupHelper extends HelperBase{
         initGroupModification();
         fillGroupForm(group);
         submitGroupModification();
-        groupCache = null;
+        groupCash = null;
         returnToGroupPage();
     }
+
+    public void delete(GroupData group) {
+        selectGroupById(group.getId());
+        DeleteSelectedGroups();
+        groupCash = null;
+        returnToGroupPage();
+    }
+
+
     public boolean isThereAGroup() {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public int Count() {
+    public int count() {
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    private Groups groupCache = null;
+    private Groups groupCash = null;
 
     public Groups all() {
-        if (groupCache != null) {
-            return new Groups(groupCache);
+        if (groupCash != null) {
+            return new Groups(groupCash);
         }
-
-        groupCache = new Groups();
+        groupCash = new Groups();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
-        for (WebElement element : elements){
+        for (WebElement element : elements) {
             String name = element.getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            groupCache.add(new GroupData().withId(id).withName(name));
+            groupCash.add(new GroupData().withId(id).withName(name));
         }
-        return new Groups(groupCache);
+        return new Groups(groupCash);
     }
+
+
 }
+

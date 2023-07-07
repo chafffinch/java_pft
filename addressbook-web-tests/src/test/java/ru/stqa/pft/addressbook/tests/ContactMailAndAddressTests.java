@@ -1,45 +1,49 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.stream.Collectors;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ContactMailAndAddressTests extends TestBase {
+public class ContactMailAndAddressTests extends TestBase{
+
+    @BeforeMethod
+    public void ensurePrecondition() {
+        Groups groups = app.db().groups();
+        app.goTo().homePage();
+        if (app.contact().all().size() == 0) {
+            app.contact().create(new ContactData().withName("marina").withFirstname("alieva").withMobileTelephone("977-302")
+                    .withHomePhone("977-303").inGroup(groups.iterator().next())
+                    .withAddress("msk, russia").withMail("m@mail.ru").withMail2("a@mail.com")
+                    .withMail3("fpfp@mail.ru"), true);
+        }
+    }
+
     @Test
-    public void testContactPhones() {
-        app.GoTo().home();
-        ContactData contact = app.contact().allContacts().iterator().next();
-        ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
+    public void testContactTelephone() {
+        app.goTo().homePage();
+        ContactData contact = app.contact().all().iterator().next();
+        ContactData contactInfoFoEditForm = app.contact().infoFromEditForm(contact);
 
-        assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
-        assertThat(contact.getNewAddress(), equalTo(contactInfoFromEditForm.getNewAddress()));
-        assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
+        assertThat(contact.getAllMail(), equalTo(mergeMail(contactInfoFoEditForm)));
+        assertThat(contact.getAddress(), equalTo(megaAddress(contactInfoFoEditForm)));
     }
 
-
-    private String mergePhones(ContactData contact) {
-        return   Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone()).stream()
-                .filter(s -> ! s.equals("")).map(ContactMailAndAddressTests::cleaned).collect(Collectors.joining("\n"));
-
-    }
-
-    private String mergeEmails(ContactData contact) {
-        return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
-                .stream().filter((s -> !s.equals("")))
-                .map(ContactMailAndAddressTests::cleanedAe)
+    private String mergeMail(ContactData contact) {
+        return Arrays.asList(contact.getMail(), contact.getMail2(), contact.getMail3())
+                .stream().filter((s) -> ! s.equals(""))
                 .collect(Collectors.joining("\n"));
     }
-    public static String cleanedAe(String address) {
-        return address.replaceAll("\\s", "");
-    }
-
-    public static String cleaned(String phone) {
-        return  phone.replaceAll("\\s","").replaceAll("[-()]","");
+    private String megaAddress(ContactData contact) {
+        return Arrays.asList(contact.getAddress())
+                .stream().filter((s) -> ! s.equals(""))
+                .collect(Collectors.joining("\n"));
     }
 }
+

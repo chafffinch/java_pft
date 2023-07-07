@@ -1,33 +1,31 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.annotations.Test;
-import ru.stqa.pft.addressbook.model.Contacts;
-import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.sql.*;
 
 public class DbConnectionTest {
 
-
     @Test
-    public void testContactDbConnection() {
+    public void testDbConnection() {
         Connection conn = null;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/addressbook?user=root&password=");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/addressbook?user=root&password=&serverTimezone=UTC");
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("select id, firstname, lastname, address, home, mobile" +
-                    ", work, phone2, email, email2, email3 from addressbook");
-            Contacts contacts = new Contacts();
+            ResultSet rs = st.executeQuery("select group_id, group_name, group_header, group_footer from group_list");
+            Groups groups = new Groups();
             while (rs.next()) {
-                contacts.add(new ContactData().withId(rs.getInt("id")).withFirstName(rs.getString("firstname")).withLastName(rs.getString("lastname"))
-                        .withAddress(rs.getString("address")).withHomePhone(rs.getString("home")).withMobilePhone(rs.getString("mobile"))
-                        .withWorkPhone(rs.getString("work")).withEmail(rs.getString("email")).withEmail2(rs.getString("email2")).withEmail3(rs.getString("email3")));
+                groups.add(new GroupData().withId(rs.getInt("group_id")).withName(rs.getString("group_name"))
+                        .withHeader(rs.getString("group_header"))
+                        .withFooter(rs.getString("group_footer")));
             }
             rs.close();
             st.close();
             conn.close();
 
-            System.out.println(contacts);
+            System.out.println(groups);
 
             // Do something with the Connection
 
@@ -39,3 +37,4 @@ public class DbConnectionTest {
         }
     }
 }
+

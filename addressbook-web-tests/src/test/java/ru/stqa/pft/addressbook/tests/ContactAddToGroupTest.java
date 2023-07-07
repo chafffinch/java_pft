@@ -1,42 +1,46 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
+
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
-import ru.stqa.pft.addressbook.model.Groups;
-
 import java.io.File;
-
-import static org.testng.AssertJUnit.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasItem;
 
 public class ContactAddToGroupTest extends TestBase {
 
-    File photo = new File("src/test/resources/AvatarPhoto.jpg");
-
-    @BeforeMethod
+    @BeforeClass
     public void ensurePreconditions() {
-        if (app.db().contacts().size() == 0 | app.db().groups().size() == 0 | app.db().verifyContactNotInGroup().size() != 0) { //данные из базы (.db().)
-            app.createGroupIfNot();
-            ContactData contact = new ContactData();
-            app.contact().createWithoutGroup(contact.withFirstName("000").withLastName("000").withAddress("000")
-                    .withEmail("000").withEmail2("000").withEmail3("000")
-                    .withHomePhone("000").withMobilePhone("000").withWorkPhone("000"));
-            app.contact().gotoHomePage();
+        if (app.db().groups().size() == 0) {
+            app.goTo().groupPage();
+            app.group().create(new GroupData().withName("test1"));
+        }
+
+        if (app.db().contacts().size() == 0) {
+            File photo = new File("src/test/resources/Ferma.png");
+            app.goTo().homePage();
+            app.contact().create(new ContactData().withName("ivan")
+                    .withFirstname("Gorelkin").withPhoto(photo), true);
         }
     }
 
+
     @Test
-    public void testAddContactInGroup() {
-        ContactData before = app.db().contactWithoutGroup();
-        Groups groups = app.db().groups();
-        GroupData group = groups.iterator().next();
-        app.contact().gotoHomePage();
-        app.contact().selectContactWithoutGroup(before);
-        app.contact().selectGroup(group);
-        app.contact().addContactToGroup();
-        ContactData after = app.db().contactById(before.getId());
-        assertTrue(after.getGroups().contains(group));
-        verifyContactListInUI();
+    public void testContactAddToGroup() {
+        ContactData contactBefore = app.db().contacts().iterator().next();
+        GroupData groupBefore = app.db().groups().iterator().next();
+        app.goTo().homePage();
+        app.contact().addToGroup(contactBefore, groupBefore);
+        app.goTo().homePage();
+        app.contact().showAllContact();
+
+        ContactData contactAfter = app.db().contacts().iterator().next();
+        GroupData groupAfter= app.db().groups().iterator().next();
+
+        assertThat(contactAfter.getGroups(), hasItem(groupBefore));
+        assertThat(groupAfter.getContacts(), hasItem(contactBefore));
     }
 }
+
