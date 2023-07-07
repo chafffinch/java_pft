@@ -1,31 +1,29 @@
 [
   {
-    "name": "name0",
-    "firstname": "firstname0",
-    "mobileTelephone": "977-302",
-    "mail": "m@mail.ru",
-    "mail2": "a@mail.ru",
-    "mail3": "",
+    "firstname": "Firstname 0",
+    "middlename": "Middlename 0",
+    "lastname": "Lastname 0",
+    "email": "email0@mail.ru",
+    "address": "city0",
     "group": "test1",
-    "homePhone": "977-303",
-    "workPhone": "",
-    "Address": "msk",
-    "photo": "src\\\\test\\\\resources\\\\AvatarPhoto.jpg"
-
+    "mobilePhone": "977-302"
   },
   {
-    "name": "name1",
-    "firstname": "firstname1",
-    "mobileTelephone": "977-303",
-    "mail": "m@mail.ru",
-    "mail2": "a@mail.ru",
-    "mail3": "",
+    "firstname": "Firstname 1",
+    "middlename": "Middlename 1",
+    "lastname": "Lastname 1",
+    "email": "email1@mail.ru",
+    "address": "city1",
     "group": "test1",
-    "homePhone": "977-304",
-    "workPhone": "",
-    "Address": "msk",
-    "photo": "src\\\\test\\\\resources\\\\AvatarPhoto.jpg"
+    "mobilePhone": "977-303"
+  },
+  {
+    "firstname": "Firstname 2",
+    "middlename": "Middlename 2",
+    "lastname": "Lastname 2",
+    "email": "email2@mail.ru",
+    "address": "city2",
+    "group": "test1",
+    "mobilePhone": "977-304"
   }
-
 ]
-

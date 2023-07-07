@@ -42,35 +42,36 @@ public class TestBase {
 
     @BeforeMethod(alwaysRun = true)
     public void logTestStart(Method m, Object[] p) {
-        logger.info("Start test " + m.getName()+ "with parameters " + Arrays.asList(p));
+        logger.info("Start test " + m.getName() + " with parameter " + Arrays.asList(p));
     }
 
     @AfterMethod(alwaysRun = true)
     public void logTestStop(Method m) {
         logger.info("Stop test " + m.getName());
+
+    }
+
+    public ApplicationManager app() {
+        return app;
     }
 
     public void verifyGroupListInUI() {
-        if (Boolean.getBoolean("verifyUI")) { //-DverufyUI=true добавлять в нужные тесты, где требуется проверка UI
+        if (Boolean.getBoolean("verifyUI")) {
             Groups dbGroups = app.db().groups();
-            Groups uiGroups = app.group().all();
+            Groups uiGroups = app().group().all();
             assertThat(uiGroups, equalTo(dbGroups.stream()
                     .map((g) -> new GroupData().withId(g.getId()).withName(g.getName()))
                     .collect(Collectors.toSet())));
         }
     }
+
     public void verifyContactListInUI() {
-        if (Boolean.getBoolean("verifyUI")) { //-DverufyUI=true добавлять в нужные тесты, где требуется проверка UI
+        if (Boolean.getBoolean("verifyUI")) {
             Contacts dbContacts = app.db().contacts();
             Contacts uiContacts = app.contact().all();
             assertThat(uiContacts, equalTo(dbContacts.stream()
-                    .map((c) -> new ContactData().withId(c.getId()).withName(c.getName())
-                            .withFirstname(c.getFirstname()).withAddress(c.getAddress()))
-                    .collect(Collectors.toSet())));
+                    .map((c) -> new ContactData().withId(c.getId()).withFirstname(c.getFirstname()).withLastname(c.getLastname())
+                            .withAddress(c.getAddress())).collect(Collectors.toSet())));
         }
     }
-
 }
-
-
-

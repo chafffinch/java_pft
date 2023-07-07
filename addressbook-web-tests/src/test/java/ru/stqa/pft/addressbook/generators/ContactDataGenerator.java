@@ -8,7 +8,6 @@ import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,14 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContactDataGenerator {
+
     @Parameter(names = "-c", description = "Contact count")
     public int count;
 
-    @Parameter (names = "-f", description = "Target file")
+    @Parameter(names = "-f", description = "Target file")
     public String file;
 
-    @Parameter (names = "-d", description = "Data format")
-    //-f src/test/resources/contact.json -c 3 -d json
+    @Parameter(names = "-d", description = "Data format")
     public String format;
 
     public static void main(String[] args) throws IOException {
@@ -40,7 +39,7 @@ public class ContactDataGenerator {
     }
 
     private void run() throws IOException {
-        List<ContactData> contacts = generateContact(count);
+        List<ContactData> contacts = generateContacts(count);
         if (format.equals("csv")) {
             saveAsCsv(contacts, new File(file));
         } else if (format.equals("xml")) {
@@ -48,10 +47,11 @@ public class ContactDataGenerator {
         } else if (format.equals("json")) {
             saveAsJson(contacts, new File(file));
         } else {
-            System.out.println("Я не знаю такой формат" + format);
+            System.out.println("Unrecognized format " + format);
         }
     }
 
+    //-c 3 -f src/test/resources/contacts.json -d json
     private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         String json = gson.toJson(contacts);
@@ -60,36 +60,33 @@ public class ContactDataGenerator {
         }
     }
 
+    //-c 3 -f src/test/resources/contacts.xml -d xml
     private void saveAsXml(List<ContactData> contacts, File file) throws IOException {
         XStream xstream = new XStream();
         xstream.processAnnotations(ContactData.class);
+        xstream.allowTypes(new Class[]{ContactData.class});
         String xml = xstream.toXML(contacts);
         try (Writer writer = new FileWriter(file)) {
             writer.write(xml);
         }
     }
 
+    //-c 3 -f src/test/resources/contacts.csv -d csv
     private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
         try (Writer writer = new FileWriter(file)) {
             for (ContactData contact : contacts) {
-                writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getName(), contact.getFirstname()
-                        , contact.getMobileTelephone(), contact//.getGroup()
-                        , contact.getHomePhone()
-                        , contact.getAddress(), contact.getMail(), contact.getMail2()));
+                writer.write(String.format("%s;%s;%s;%s;%s;%s;%s\n", contact.getFirstname(), contact.getMiddlename(),
+                        contact.getLastname(), contact.getMobilePhone(), contact.getEmail(), contact.getAddress()));
             }
         }
     }
 
-    private List<ContactData> generateContact(int count) {
+    private List<ContactData> generateContacts(int count) {
         List<ContactData> contacts = new ArrayList<ContactData>();
-        File photo = new File("src/test/resources/AvatarPhoto.jpg");
         for (int i = 0; i < count; i++) {
-            contacts.add(new ContactData().withName(String.format("name%s", i))
-                    .withFirstname(String.format("firstname%s", i))
-                    .withMobileTelephone(String.format("977-302%s", i))
-                    .withHomePhone(String.format("977-303", i)).withAddress(String.format("msk, dom%s", i))
-                    .withMail(String.format("m%s@mail.ru", i)).withMail2(String.format("a%s@mail.ru", i))
-                    .withPhoto(new File("src/test/resources/AvatarPhoto.jpg")));
+            contacts.add(new ContactData().withFirstname(String.format("Firstname %s", i)).withLastname(String.format("Lastname %s", i))
+                    .withMiddlename(String.format("Middlename %s", i)).withMobilePhone(String.format("977-302" + "%s", i))
+                    .withEmail(String.format("email" + "%s" + "@mail.ru", i)).withAddress(String.format("city" + "%s", i)));
         }
         return contacts;
     }
