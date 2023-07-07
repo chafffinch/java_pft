@@ -19,10 +19,10 @@ public class ContactAddToGroupTest extends TestBase {
         }
 
         if (app.db().contacts().size() == 0) {
-            File photo = new File("src/test/resources/Ferma.png");
+            File photo = new File("src/test/resources/AvatarPhoto.png");
             app.goTo().homePage();
-            app.contact().create(new ContactData().withName("ivan")
-                    .withFirstname("Gorelkin").withPhoto(photo), true);
+            app.contact().create(new ContactData().withName("marina")
+                    .withFirstname("alieva").withPhoto(photo), true);
         }
     }
 
@@ -43,4 +43,6 @@ public class ContactAddToGroupTest extends TestBase {
         assertThat(groupAfter.getContacts(), hasItem(contactBefore));
     }
 }
+
+
 

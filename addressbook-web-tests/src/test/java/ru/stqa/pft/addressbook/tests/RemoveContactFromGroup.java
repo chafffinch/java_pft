@@ -55,3 +55,4 @@ public class RemoveContactFromGroup extends TestBase{
         assertThat(groupRemove.getContacts(), not(groupRemove));
     }
 }
+

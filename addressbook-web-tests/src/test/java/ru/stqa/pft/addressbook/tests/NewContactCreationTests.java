@@ -24,7 +24,7 @@ public class NewContactCreationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validContactsFromXml() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        File photo = new File("src/test/resources/Ferma.png");
+        File photo = new File("src/test/resources/AvatarPhoto.jpg");
         try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contact.xml")))) {
             String xml = "";
             String line = reader.readLine();
@@ -42,7 +42,7 @@ public class NewContactCreationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validContactsFromJson() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        File photo = new File("src/test/resources/Ferma.png");
+        File photo = new File("src/test/resources/AvatarPhoto.jpg");
         try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contact.json")))) {
             String json = "";
             String line = reader.readLine();
@@ -68,3 +68,4 @@ public class NewContactCreationTests extends TestBase {
         verifyContactListInUI();
     }
 }
+
