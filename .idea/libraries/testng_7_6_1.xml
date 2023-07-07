@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="testng-7.6.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/testng/7.6.1/testng-7.6.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
