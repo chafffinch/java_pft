@@ -9,3 +9,23 @@ dependencies {
     implementation group: 'org.testng', name: 'testng', version: '7.7.1'
 
 }
+
+buildscript{
+    repositories{
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'no.nils:wsdl2java:0.12'
+    }
+}
+
+apply plugin: 'no.nils.wsdl2java'
+
+wsdl2java {
+    wsdlDir = file("src/main/java") // define to support incremental build
+    wsdlsToGenerate = [   //  2d-array of wsdls and cxf-parameters
+                          ['src/main/resources/wsdl/firstwsdl.wsdl'],
+                          ['-xjc','-b','bindingfile.xml','src/main/resources/wsdl/secondwsdl.wsdl']
+    ]
+}
