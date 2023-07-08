@@ -27,7 +27,7 @@ public class ChangePasswordTests extends TestBase {
     @Test
     public void testPassword() throws IOException, MessagingException {
 
-        //увести в отдельный метод как логин админа и возможно сделать его параметризированным
+
         app.getDriver().findElement(By.id("username")).sendKeys("administrator");
         app.getDriver().findElement(By.cssSelector("input[value='Login']")).click();
         app.getDriver().findElement(By.id("password")).sendKeys("root");
