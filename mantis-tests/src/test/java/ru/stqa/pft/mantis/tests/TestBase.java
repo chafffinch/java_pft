@@ -17,12 +17,13 @@ public class TestBase {
     @BeforeSuite(alwaysRun = true)
     public void setUp() throws IOException {
         app.init();
-        app.ftp().upload(new File("src/test/resources/config_inc.php"), "config_inc.php", "config_inc.php.bak");
+        app.ftp().upload(new File("src/test/resources/config_inc.php"), "config/config_inc.php", "config/config_inc.php.backup");
     }
 
     @AfterSuite(alwaysRun = true)
-    public void tearDown() throws Exception {
-        app.ftp().restore("config_inc.php.bak", "config_inc.php");
+    public void tearDown() throws IOException {
         app.stop();
+        app.ftp().restore("config/config_inc.php.backup", "config/config_inc.php");
     }
 }
+

@@ -6,13 +6,14 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
+import java.io.IOException;
 
 public class HelperBase {
 
     protected ApplicationManager app;
     protected WebDriver wd;
 
-    public HelperBase(ApplicationManager app) {
+    public HelperBase(ApplicationManager app) throws IOException {
         this.app = app;
         this.wd = app.getDriver();
     }
@@ -56,4 +57,3 @@ public class HelperBase {
         }
     }
 }
-

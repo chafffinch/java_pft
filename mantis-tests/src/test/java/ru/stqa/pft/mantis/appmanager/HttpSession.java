@@ -1,6 +1,5 @@
 package ru.stqa.pft.mantis.appmanager;
 
-
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -53,4 +52,3 @@ public class HttpSession {
         return body.contains(String.format("<span class=\"user-info\">%s</span>", username));
     }
 }
-

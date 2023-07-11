@@ -5,7 +5,7 @@ import ru.stqa.pft.mantis.appmanager.HttpSession;
 
 import java.io.IOException;
 
-import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertTrue;
 
 public class LoginTests extends TestBase {
 
@@ -16,4 +16,3 @@ public class LoginTests extends TestBase {
         assertTrue(session.isLoggedInAs("administrator"));
     }
 }
-

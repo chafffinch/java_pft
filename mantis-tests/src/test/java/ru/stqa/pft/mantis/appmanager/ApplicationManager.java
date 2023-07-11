@@ -15,27 +15,26 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.MatchResult;
 
 public class ApplicationManager {
+    private final String browser;
     private final Properties properties;
     private WebDriver wd;
-
-    private String browser;
     private RegistrationHelper registrationHelper;
     private FtpHelper ftp;
     private MailHelper mailHelper;
-    private JamesHelper jamesHelper;
+    private uiHelper uiHelper;
+ /*   private SoapHelper soapHelper;
+    private RestHelper restHelper;*/
     private DbHelper dbHelper;
-
 
     public ApplicationManager(String browser) {
         this.browser = browser;
+        dbHelper = new DbHelper();
         properties = new Properties();
     }
 
     public void init() throws IOException {
-        dbHelper = new DbHelper();
-
         String target = System.getProperty("target", "local");
-        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+        properties.load(new FileReader(String.format("src/test/resources/%s.properties", target)));
     }
 
     public void stop() {
@@ -43,7 +42,6 @@ public class ApplicationManager {
             wd.quit();
         }
     }
-
 
     public HttpSession newSession() {
         return new HttpSession(this);
@@ -53,11 +51,18 @@ public class ApplicationManager {
         return properties.getProperty(key);
     }
 
-    public RegistrationHelper registration() {
+    public RegistrationHelper registration() throws IOException {
         if (registrationHelper == null) {
             registrationHelper = new RegistrationHelper(this);
         }
         return registrationHelper;
+    }
+
+    public uiHelper uiHelper() throws IOException {
+        if (uiHelper == null) {
+            uiHelper = new uiHelper(this);
+        }
+        return uiHelper;
     }
 
     public FtpHelper ftp() {
@@ -67,8 +72,8 @@ public class ApplicationManager {
         return ftp;
     }
 
-    public WebDriver getDriver() {
-        if (wd == null) {
+    public WebDriver getDriver() throws IOException {
+        if (wd == null){
             if (browser.equals(BrowserType.FIREFOX)) {
                 wd = new FirefoxDriver();
             } else if (browser.equals(BrowserType.CHROME)) {
@@ -89,22 +94,21 @@ public class ApplicationManager {
         return mailHelper;
     }
 
-    public JamesHelper james() {
-        if (jamesHelper == null) {
-            jamesHelper = new JamesHelper(this);
+  /*  public SoapHelper soap() {
+        if (soapHelper == null) {
+            soapHelper = new SoapHelper(this);
         }
-        return jamesHelper;
-    }
+        return soapHelper;
+    }*/
 
-    public ResetPasswordHelper resetPassword() {
-        return new ResetPasswordHelper(this);
-    }
+/*    public RestHelper rest() {
+        if (restHelper == null) {
+            restHelper = new RestHelper(this);
+        }
+        return restHelper;
+    }*/
 
     public DbHelper db() {
         return dbHelper;
     }
-
-
 }
-
-

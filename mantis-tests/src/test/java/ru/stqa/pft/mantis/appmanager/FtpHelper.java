@@ -34,4 +34,3 @@ public class FtpHelper {
         ftp.disconnect();
     }
 }
-
