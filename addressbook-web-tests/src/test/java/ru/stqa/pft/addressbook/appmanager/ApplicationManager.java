@@ -9,22 +9,21 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 
 
-import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-public class ApplicationManager {
-    private final Properties properties;
-    WebDriver wd;
 
+public class ApplicationManager {
+    private String browser;
+    private final Properties properties;
     private ContactHelper contactHelper;
     private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
-    private String browser;
+    public WebDriver wd;
     private DbHelper dbHelper;
 
     public ApplicationManager(String browser) {
@@ -34,7 +33,7 @@ public class ApplicationManager {
 
     public void init() throws IOException {
         String target = System.getProperty("target", "local");
-        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+        properties.load(new FileReader(String.format("src/test/resources/%s.properties", target)));
         dbHelper = new DbHelper();
         if (browser.equals(BrowserType.FIREFOX)) {
             wd = new FirefoxDriver();
@@ -52,11 +51,8 @@ public class ApplicationManager {
         sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
     }
 
-    public void logout() {
-        wd.findElement(By.linkText("Logout")).click();
-    }
-
     public void stop() {
+        sessionHelper.logout();
         wd.quit();
     }
 
@@ -75,7 +71,4 @@ public class ApplicationManager {
     public DbHelper db() {
         return dbHelper;
     }
-
 }
-
-

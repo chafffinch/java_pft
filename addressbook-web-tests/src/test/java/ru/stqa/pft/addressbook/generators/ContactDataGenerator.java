@@ -29,9 +29,9 @@ public class ContactDataGenerator {
     public static void main(String[] args) throws IOException {
         ContactDataGenerator generator = new ContactDataGenerator();
         JCommander jCommander = new JCommander(generator);
-        try {
+        try{
             jCommander.parse(args);
-        } catch (ParameterException ex) {
+        } catch (ParameterException ex){
             jCommander.usage();
             return;
         }
@@ -42,51 +42,68 @@ public class ContactDataGenerator {
         List<ContactData> contacts = generateContacts(count);
         if (format.equals("csv")) {
             saveAsCsv(contacts, new File(file));
-        } else if (format.equals("xml")) {
+            System.out.println("Writing in CSV");
+        } else if (format.equals("xml")){
             saveAsXml(contacts, new File(file));
+            System.out.println("Writing in XML");
         } else if (format.equals("json")) {
             saveAsJson(contacts, new File(file));
+            System.out.println("Writing in JSON");
         } else {
             System.out.println("Unrecognized format " + format);
         }
+
     }
 
-    //-c 3 -f src/test/resources/contacts.json -d json
     private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         String json = gson.toJson(contacts);
-        try (Writer writer = new FileWriter(file)) {
-            writer.write(json);
-        }
+        Writer writer = new FileWriter(file);
+        writer.write(json);
+        writer.close();
     }
 
-    //-c 3 -f src/test/resources/contacts.xml -d xml
     private void saveAsXml(List<ContactData> contacts, File file) throws IOException {
         XStream xstream = new XStream();
         xstream.processAnnotations(ContactData.class);
-        xstream.allowTypes(new Class[]{ContactData.class});
         String xml = xstream.toXML(contacts);
-        try (Writer writer = new FileWriter(file)) {
-            writer.write(xml);
-        }
+        Writer writer = new FileWriter(file);
+        writer.write(xml);
+        writer.close();
     }
 
-    //-c 3 -f src/test/resources/contacts.csv -d csv
     private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
-        try (Writer writer = new FileWriter(file)) {
-            for (ContactData contact : contacts) {
-                writer.write(String.format("%s;%s;%s;%s;%s;%s;%s\n", contact.getFirstname(), contact.getMiddlename(),
-                        contact.getLastname(), contact.getMobilePhone(), contact.getEmail(), contact.getAddress()));
-            }
+        Writer writer = new FileWriter(file);
+        for (ContactData contact : contacts){
+            writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n",
+                    contact.getFirstName(),
+                    contact.getLastName(),
+                    contact.getAddress(),
+                    contact.getMobilePhone(),
+                    contact.getWorkPhone(),
+                    contact.getHomePhone(),
+                    contact.getPrimaryEmail(),
+                    contact.getSecondaryEmail(),
+                    contact.getThirdEmail(),
+                    contact.getPhotoPath()));
         }
+        writer.close();
     }
 
     private List<ContactData> generateContacts(int count) {
-        List<ContactData> contacts = new ArrayList<ContactData>();
-        for (int i = 0; i < count; i++) {
-            contacts.add(new ContactData().withFirstname(String.format("Firstname %s", i)).withLastname(String.format("Lastname %s", i))
-                    .withMiddlename(String.format("Middlename %s", i)).withMobilePhone(String.format("977-302" + "%s", i))
-                    .withEmail(String.format("email" + "%s" + "@mail.ru", i)).withAddress(String.format("city" + "%s", i)));
+        List<ContactData> contacts = new ArrayList<>();
+        for (int i = 0; i < count; i++){
+            contacts.add(new ContactData()
+                    .withFirstName(String.format("marinaG %d", i))
+                    .withLastName(String.format("alievaG %d", i))
+                    .withAddress(String.format("mskG %d", i))
+                    .withMobilePhone(String.format("977-302%d", i))
+                    .withWorkPhone(String.format("977-303%d", i))
+                    .withHomePhone(String.format("977-304%d", i))
+                    .withPrimaryEmail(String.format("m@mail.ruG %d", i))
+                    .withSecondaryEmail(String.format("a@mail.ruG %d", i))
+                    .withThirdEmail(String.format("ma@mail.ruG %d", i))
+                    .withPhotoPath());
         }
         return contacts;
     }

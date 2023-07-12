@@ -11,15 +11,15 @@ public class Contacts extends ForwardingSet<ContactData> {
     private Set<ContactData> delegate;
 
     public Contacts(Contacts contacts) {
-        this.delegate = new HashSet<ContactData>(contacts.delegate);
+        this.delegate = new HashSet<>(contacts.delegate);
     }
 
     public Contacts() {
-        this.delegate = new HashSet<ContactData>();
+        this.delegate = new HashSet<>();
     }
 
     public Contacts(Collection<ContactData> contacts) {
-        this.delegate = new HashSet<ContactData>(contacts);
+        this.delegate = new HashSet<>(contacts);
     }
 
     @Override
@@ -33,12 +33,10 @@ public class Contacts extends ForwardingSet<ContactData> {
         return contacts;
     }
 
-
-    public Contacts withOut(ContactData contact) {
+    public Contacts without(ContactData contact) {
         Contacts contacts = new Contacts(this);
         contacts.remove(contact);
         return contacts;
     }
-
 }
 

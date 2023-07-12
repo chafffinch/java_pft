@@ -27,13 +27,12 @@ public class GroupDataGenerator {
     @Parameter(names = "-d", description = "Data format")
     public String format;
 
-
     public static void main(String[] args) throws IOException {
         GroupDataGenerator generator = new GroupDataGenerator();
         JCommander jCommander = new JCommander(generator);
-        try {
+        try{
             jCommander.parse(args);
-        } catch (ParameterException ex) {
+        } catch (ParameterException ex){
             jCommander.usage();
             return;
         }
@@ -44,16 +43,16 @@ public class GroupDataGenerator {
         List<GroupData> groups = generateGroups(count);
         if (format.equals("csv")) {
             saveAsCsv(groups, new File(file));
-        } else if (format.equals("xml")) {
+        } else if (format.equals("xml")){
             saveAsXml(groups, new File(file));
         } else if (format.equals("json")) {
             saveAsJson(groups, new File(file));
         } else {
             System.out.println("Unrecognized format " + format);
         }
+
     }
 
-    //-c 3 -f src/test/resources/groups.json -d json
     private void saveAsJson(List<GroupData> groups, File file) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         String json = gson.toJson(groups);
@@ -62,18 +61,15 @@ public class GroupDataGenerator {
         }
     }
 
-    //-c 3 -f src/test/resources/contacts.xml -d xml
     private void saveAsXml(List<GroupData> groups, File file) throws IOException {
         XStream xstream = new XStream();
         xstream.processAnnotations(GroupData.class);
-        xstream.allowTypes(new Class[]{GroupData.class});
         String xml = xstream.toXML(groups);
         try (Writer writer = new FileWriter(file)) {
             writer.write(xml);
         }
     }
 
-    //-c 3 -f src/test/resources/contacts.csv -d csv
     private void saveAsCsv(List<GroupData> groups, File file) throws IOException {
         try (Writer writer = new FileWriter(file)) {
             for (GroupData group : groups) {
@@ -83,13 +79,11 @@ public class GroupDataGenerator {
     }
 
     private List<GroupData> generateGroups(int count) {
-        List<GroupData> groups = new ArrayList<GroupData>();
-        for (int i = 0; i < count; i++) {
-            groups.add(new GroupData().withName(String.format("test %s", i))
-                    .withHeader(String.format("test %s", i)).withFooter(String.format("test %s", i)));
+        List<GroupData> groups = new ArrayList<>();
+        for (int i = 0; i < count; i++){
+            groups.add(new GroupData().withName(String.format("test %d", i)).withHeader(String.format("header %d", i))
+                    .withFooter(String.format("footer %d", i)));
         }
         return groups;
     }
-
-
 }

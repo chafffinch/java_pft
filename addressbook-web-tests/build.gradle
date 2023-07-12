@@ -2,9 +2,7 @@ apply plugin: 'java'
 
 
 task testGroups(type: Test) {
-    useTestNG {
-        suites 'src/test/resources/testng-groups.xml'
-    }
+    useTestNG {}
     if (project.hasProperty('browser')) {
         systemProperty 'browser', "${browser}"
     }

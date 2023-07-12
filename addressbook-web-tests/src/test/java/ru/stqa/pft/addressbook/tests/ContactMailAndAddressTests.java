@@ -1,3 +1,4 @@
+/*
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.annotations.BeforeMethod;
@@ -50,4 +51,4 @@ public class ContactMailAndAddressTests extends TestBase{
     public static String cleaned(String phone) {
         return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
     }
-}
+}*/

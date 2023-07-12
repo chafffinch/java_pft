@@ -14,19 +14,21 @@ public class GroupDeletionTests extends TestBase{
     public void ensurePreconditions() {
         app.goTo().groupPage();
         if (app.db().groups().size() == 0) {
-            app.group().create(new GroupData().withName("test1"));
+            app.group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
         }
     }
 
     @Test
-    public void testGroupDeletion() throws Exception {
+    public void testGroupDeletion() {
         Groups before = app.db().groups();
         GroupData deletedGroup = before.iterator().next();
         app.group().delete(deletedGroup);
-        assertThat(app.group().count(), equalTo(before.size() - 1));
-        Groups after = app.db().groups();
-        assertThat(after, equalTo(before.withOut(deletedGroup)));
-        verifyGroupListInUI(); //В конфигурации запуска -DverifyUI=true
-    }
 
+        assertThat(app.group().count(), equalTo(before.size() - 1));
+
+        Groups after = app.db().groups();
+
+        assertThat(after, equalTo(before.without(deletedGroup)));
+        verifyGroupListInUI();
+    }
 }

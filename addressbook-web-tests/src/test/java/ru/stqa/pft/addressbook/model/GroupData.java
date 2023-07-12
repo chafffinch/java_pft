@@ -15,28 +15,21 @@ import java.util.Set;
 @Entity
 @Table(name="group_list")
 public class GroupData {
-    @ManyToMany(mappedBy = "groups", fetch = FetchType.EAGER)
-    private final Set<ContactData> contacts = new HashSet<>();
     @Expose
     @Column(name="group_name")
-    public String name;
+    private String name;
     @Expose
-    @Column(name="group_header")
-    @Type(type="text")
-    public String header;
+    @Column(name="group_header", columnDefinition="TEXT")
+    private String header;
     @Expose
-    @Column(name="group_footer")
-    @Type(type="text")
-    public String footer;
-
+    @Column(name="group_footer", columnDefinition="TEXT")
+    private String footer;
     @XStreamOmitField
     @Id
     @Column(name="group_id")
     private int id = Integer.MAX_VALUE;
-
-    public Set<ContactData> getContacts() {
-        return new Contacts(contacts);
-    }
+    @ManyToMany(mappedBy = "groups")
+    private Set<ContactData> contacts = new HashSet<>();
 
     public String getName() {
         return name;
@@ -54,10 +47,14 @@ public class GroupData {
         return id;
     }
 
-    public void setID(int id) {
-        this.id = id;
+    public Contacts getContacts() {
+        return new Contacts(contacts);
     }
 
+    public GroupData withId(int id) {
+        this.id = id;
+        return this;
+    }
     public GroupData withName(String name) {
         this.name = name;
         return this;
@@ -74,39 +71,23 @@ public class GroupData {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        GroupData groupData = (GroupData) o;
-
-        if (id != groupData.id) return false;
-        if (!Objects.equals(name, groupData.name)) return false;
-        if (!Objects.equals(header, groupData.header)) return false;
-        return Objects.equals(footer, groupData.footer);
-    }
-
-    @Override
     public String toString() {
         return "GroupData{" +
                 "name='" + name + '\'' +
-                ", header='" + header + '\'' +
-                ", footer='" + footer + '\'' +
-                ", id=" + id +
+                ", id='" + id + '\'' +
                 '}';
     }
 
     @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (header != null ? header.hashCode() : 0);
-        result = 31 * result + (footer != null ? footer.hashCode() : 0);
-        result = 31 * result + id;
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GroupData groupData = (GroupData) o;
+        return id == groupData.id && Objects.equals(name, groupData.name) && Objects.equals(header, groupData.header) && Objects.equals(footer, groupData.footer);
     }
 
-    public GroupData withId(int id) {
-        this.id = id;
-        return this;
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, header, footer, id);
     }
 }

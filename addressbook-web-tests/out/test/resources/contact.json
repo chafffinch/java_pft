@@ -1,31 +1,38 @@
 [
   {
-    "name": "name0",
-    "firstname": "firstname0",
-    "mobileTelephone": "977-302",
-    "mail": "m@mail.ru",
-    "mail2": "a@mail.ru",
-    "mail3": "",
-    "group": "test1",
-    "homePhone": "977-303",
-    "workPhone": "",
-    "Address": "msk",
-    "photo": "src\\\\test\\\\resources\\\\AvatarPhoto.jpg"
-
+    "firstName": "marinaG 0",
+    "lastName": "alievaG 0",
+    "address": "mskG 0",
+    "mobilePhone": "977-302",
+    "workPhone": "977-303",
+    "homePhone": "977-304",
+    "primaryEmail": "m@mail.ruG 0",
+    "secondaryEmail": "a@mail.ruG 0",
+    "thirdEmail": "ma@mail.ruG 0",
+    "photoPath": "C:\\Devel\\java_pft\\java_pft\\addressbook-web-tests\\src\\test\\resources\\AvatarPhoto.jpg"
   },
   {
-    "name": "name1",
-    "firstname": "firstname1",
-    "mobileTelephone": "977-303",
-    "mail": "m@mail.ru",
-    "mail2": "a@mail.ru",
-    "mail3": "",
-    "group": "test1",
+    "firstName": "marinaG 1",
+    "lastName": "alievaG 1",
+    "address": "mskG 1",
+    "mobilePhone": "977-302",
+    "workPhone": "977-303",
     "homePhone": "977-304",
-    "workPhone": "",
-    "Address": "msk",
-    "photo": "src\\\\test\\\\resources\\\\AvatarPhoto.jpg"
+    "primaryEmail": "m@mail.ruG 1",
+    "secondaryEmail": "a@mail.ruG 1",
+    "thirdEmail": "ma@mail.ruG 1",
+    "photoPath": "C:\\Devel\\java_pft\\java_pft\\addressbook-web-tests\\src\\test\\resources\\AvatarPhoto.jpg"
+  },
+  {
+    "firstName": "marinaG 2",
+    "lastName": "alievaG 2",
+    "address": "mskG 2",
+    "mobilePhone": "977-302",
+    "workPhone": "977-303",
+    "homePhone": "977-304",
+    "primaryEmail": "m@mail.ruG 2",
+    "secondaryEmail": "a@mail.ruG 2",
+    "thirdEmail": "ma@mail.ruG 2",
+    "photoPath": "C:\\Devel\\java_pft\\java_pft\\addressbook-web-tests\\src\\test\\resources\\AvatarPhoto.jpg"
   }
-
 ]
-

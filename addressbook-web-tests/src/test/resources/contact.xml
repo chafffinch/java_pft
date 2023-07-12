@@ -1,29 +1,41 @@
 <list>
-    <ru.stqa.pft.addressbook.model.ContactData>
-        <firstname>Firstname 0</firstname>
-        <middlename>Middlename 0</middlename>
-        <lastname>Lastname 0</lastname>
-        <email>email0@mail.ru</email>
-        <address>city0</address>
-        <group>test1</group>
+    <contact>
+        <firstName>marinaG 0</firstName>
+        <lastName>alievaG 0</lastName>
+        <address>mskG 0</address>
         <mobilePhone>977-302</mobilePhone>
-    </ru.stqa.pft.addressbook.model.ContactData>
-    <ru.stqa.pft.addressbook.model.ContactData>
-        <firstname>Firstname 1</firstname>
-        <middlename>Middlename 1</middlename>
-        <lastname>Lastname 1</lastname>
-        <email>email1@mail.ru</email>
-        <address>city1</address>
-        <group>test1</group>
-        <mobilePhone>977-303</mobilePhone>
-    </ru.stqa.pft.addressbook.model.ContactData>
-    <ru.stqa.pft.addressbook.model.ContactData>
-        <firstname>Firstname 2</firstname>
-        <middlename>Middlename 2</middlename>
-        <lastname>Lastname 2</lastname>
-        <email>email2@mail.ru</email>
-        <address>city2</address>
-        <group>test1</group>
-        <mobilePhone>977-305</mobilePhone>
-    </ru.stqa.pft.addressbook.model.ContactData>
+        <workPhone>977-303</workPhone>
+        <homePhone>977-304</homePhone>
+        <primaryEmail>m@mail.ruG 0</primaryEmail>
+        <secondaryEmail>a@mail.ruG 0</secondaryEmail>
+        <thirdEmail>ma@mail.ruG 0</thirdEmail>
+        <groups/>
+        <photoPath>C:\Devel\java_pft\java_pft\addressbook-web-tests\src\test\resources\AvatarPhoto.jpg</photoPath>
+    </contact>
+    <contact>
+        <firstName>marinaG 1</firstName>
+        <lastName>alievaG 1</lastName>
+        <address>mskG 1</address>
+        <mobilePhone>977-302</mobilePhone>
+        <workPhone>977-303</workPhone>
+        <homePhone>977-304</homePhone>
+        <primaryEmail>m@mail.ruG 1</primaryEmail>
+        <secondaryEmail>a@mail.ruG 1</secondaryEmail>
+        <thirdEmail>ma@mail.ruG 1</thirdEmail>
+        <groups/>
+        <photoPath>C:\Devel\java_pft\java_pft\addressbook-web-tests\src\test\resources\AvatarPhoto.jpg</photoPath>
+    </contact>
+    <contact>
+        <firstName>marinaG 2</firstName>
+        <lastName>alievaG 2</lastName>
+        <address>mskG 2</address>
+        <mobilePhone>977-302</mobilePhone>
+        <workPhone>977-303</workPhone>
+        <homePhone>977-304</homePhone>
+        <primaryEmail>m@mail.ruG 2</primaryEmail>
+        <secondaryEmail>a@mail.ruG 2</secondaryEmail>
+        <thirdEmail>ma@mail.ruG 2</thirdEmail>
+        <groups/>
+        <photoPath>C:\Devel\java_pft\java_pft\addressbook-web-tests\src\test\resources\AvatarPhoto.jpg</photoPath>
+    </contact>
 </list>

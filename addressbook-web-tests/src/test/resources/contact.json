@@ -1,29 +1,38 @@
 [
   {
-    "firstname": "Firstname 0",
-    "middlename": "Middlename 0",
-    "lastname": "Lastname 0",
-    "email": "email0@mail.ru",
-    "address": "city0",
-    "group": "test1",
-    "mobilePhone": "977-302"
+    "firstName": "marinaG 0",
+    "lastName": "alievaG 0",
+    "address": "mskG 0",
+    "mobilePhone": "977-302",
+    "workPhone": "977-303",
+    "homePhone": "977-304",
+    "primaryEmail": "m@mail.ruG 0",
+    "secondaryEmail": "a@mail.ruG 0",
+    "thirdEmail": "ma@mail.ruG 0",
+    "photoPath": "C:\\Devel\\java_pft\\java_pft\\addressbook-web-tests\\src\\test\\resources\\AvatarPhoto.jpg"
   },
   {
-    "firstname": "Firstname 1",
-    "middlename": "Middlename 1",
-    "lastname": "Lastname 1",
-    "email": "email1@mail.ru",
-    "address": "city1",
-    "group": "test1",
-    "mobilePhone": "977-303"
+    "firstName": "marinaG 1",
+    "lastName": "alievaG 1",
+    "address": "mskG 1",
+    "mobilePhone": "977-302",
+    "workPhone": "977-303",
+    "homePhone": "977-304",
+    "primaryEmail": "m@mail.ruG 1",
+    "secondaryEmail": "a@mail.ruG 1",
+    "thirdEmail": "ma@mail.ruG 1",
+    "photoPath": "C:\\Devel\\java_pft\\java_pft\\addressbook-web-tests\\src\\test\\resources\\AvatarPhoto.jpg"
   },
   {
-    "firstname": "Firstname 2",
-    "middlename": "Middlename 2",
-    "lastname": "Lastname 2",
-    "email": "email2@mail.ru",
-    "address": "city2",
-    "group": "test1",
-    "mobilePhone": "977-304"
+    "firstName": "marinaG 2",
+    "lastName": "alievaG 2",
+    "address": "mskG 2",
+    "mobilePhone": "977-302",
+    "workPhone": "977-303",
+    "homePhone": "977-304",
+    "primaryEmail": "m@mail.ruG 2",
+    "secondaryEmail": "a@mail.ruG 2",
+    "thirdEmail": "ma@mail.ruG 2",
+    "photoPath": "C:\\Devel\\java_pft\\java_pft\\addressbook-web-tests\\src\\test\\resources\\AvatarPhoto.jpg"
   }
 ]
