@@ -70,3 +70,4 @@ public class ChangePasswordTests extends TestBase {
         app.mail().stop();
     }
 }
+

@@ -37,3 +37,4 @@ public class uiHelper extends HelperBase {
         click(By.cssSelector("button[type='submit']"));
     }
 }
+

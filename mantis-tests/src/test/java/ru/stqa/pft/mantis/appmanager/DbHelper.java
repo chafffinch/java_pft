@@ -24,9 +24,10 @@ public class DbHelper {
     public List<UsersData> users() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<UsersData> result = session.createQuery( "from UsersData").list();
+        List<UsersData> result = session.createQuery("from UsersData").list();
         session.getTransaction().commit();
         session.close();
         return result;
     }
 }
+
