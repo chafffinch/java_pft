@@ -1,3 +1,4 @@
+/*
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.annotations.BeforeMethod;
@@ -54,4 +55,4 @@ public class ContactDataCompareTests extends TestBase {
         return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
     }
 
-}
+}*/

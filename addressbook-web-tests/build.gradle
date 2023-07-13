@@ -2,7 +2,9 @@ apply plugin: 'java'
 
 
 task testGroups(type: Test) {
-    useTestNG {}
+    useTestNG {
+        suites 'src/test/resources/testng-groups.xml'
+    }
     if (project.hasProperty('browser')) {
         systemProperty 'browser', "${browser}"
     }
@@ -21,25 +23,16 @@ task testContacts(type: Test) {
     if (project.hasProperty('browser')) {
         systemProperty 'browser', "${browser}"
     }
-    if (project.hasProperty('platform')) {
+    if (project.hasProperty('platform')){
         systemProperty 'platform', "${platform}"
     }
-    if (project.hasProperty('verifyUI')) {
+    if (project.hasProperty('verifyUI')){
         systemProperty 'platform', "${platform}"
     }
 }
 
 test {
-    useTestNG {}
-    if (project.hasProperty('browser')) {
-        systemProperty 'browser', "${browser}"
-    }
-    if (project.hasProperty('target')) {
-        systemProperty 'target', "${target}"
-    }
-    if (project.hasProperty('verifyUI')) {
-        systemProperty 'verifyUI', "${verifyUI}"
-    }
+    useTestNG{}
 }
 
 repositories {

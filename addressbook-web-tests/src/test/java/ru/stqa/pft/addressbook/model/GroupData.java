@@ -2,7 +2,6 @@ package ru.stqa.pft.addressbook.model;
 
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -10,38 +9,31 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-
 @XStreamAlias("group")
 @Entity
-@Table(name="group_list")
-public class GroupData {
+@Table (name = "group_list")
+
+public final class GroupData {
+
+    @Id
+    @Column (name = "group_id")
+    private int id = Integer.MAX_VALUE;
+
     @Expose
-    @Column(name="group_name")
+    @Column (name = "group_name")
     private String name;
+
     @Expose
-    @Column(name="group_header", columnDefinition="TEXT")
+    @Column (name = "group_header")
+    @Type(type = "text")
     private String header;
     @Expose
-    @Column(name="group_footer", columnDefinition="TEXT")
+    @Column (name = "group_footer")
+    @Type(type = "text")
     private String footer;
-    @XStreamOmitField
-    @Id
-    @Column(name="group_id")
-    private int id = Integer.MAX_VALUE;
+
     @ManyToMany(mappedBy = "groups")
-    private Set<ContactData> contacts = new HashSet<>();
-
-    public String getName() {
-        return name;
-    }
-
-    public String getHeader() {
-        return header;
-    }
-
-    public String getFooter() {
-        return footer;
-    }
+    private Set<ContactData> contacts = new HashSet<ContactData>();
 
     public int getId() {
         return id;
@@ -51,10 +43,18 @@ public class GroupData {
         return new Contacts(contacts);
     }
 
+    public String getName() { return name; }
+
+    public String getHeader() { return header; }
+
+    public String getFooter() { return footer; }
+
+
     public GroupData withId(int id) {
         this.id = id;
         return this;
     }
+
     public GroupData withName(String name) {
         this.name = name;
         return this;
@@ -70,13 +70,19 @@ public class GroupData {
         return this;
     }
 
+    public GroupData withContacts(Set<ContactData> contacts) {
+        this.contacts = contacts;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "GroupData{" +
-                "name='" + name + '\'' +
-                ", id='" + id + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -88,6 +94,6 @@ public class GroupData {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, header, footer, id);
+        return Objects.hash(id, name, header, footer);
     }
 }

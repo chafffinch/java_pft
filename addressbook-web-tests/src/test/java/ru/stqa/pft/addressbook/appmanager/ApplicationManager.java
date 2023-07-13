@@ -1,29 +1,27 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
+import ru.stqa.pft.addressbook.model.GroupData;
 
-
-
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 
 public class ApplicationManager {
-    private String browser;
     private final Properties properties;
-    private ContactHelper contactHelper;
+    WebDriver wd;
+
     private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
-    public WebDriver wd;
+    private ContactHelper contactHelper;
+    private final String browser;
     private DbHelper dbHelper;
 
     public ApplicationManager(String browser) {
@@ -33,8 +31,10 @@ public class ApplicationManager {
 
     public void init() throws IOException {
         String target = System.getProperty("target", "local");
-        properties.load(new FileReader(String.format("src/test/resources/%s.properties", target)));
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+
         dbHelper = new DbHelper();
+
         if (browser.equals(BrowserType.FIREFOX)) {
             wd = new FirefoxDriver();
         } else if (browser.equals(BrowserType.CHROME)) {
@@ -42,17 +42,23 @@ public class ApplicationManager {
         } else if (browser.equals(BrowserType.IE)) {
             wd = new InternetExplorerDriver();
         }
-        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         wd.get(properties.getProperty("web.baseUrl"));
         groupHelper = new GroupHelper(wd);
         contactHelper = new ContactHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
-        sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
+        sessionHelper.Login(properties.getProperty("web.baseUrl"), properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
+    }
+
+    public void createGroupIfNot() {
+        GoTo().GroupPage();
+        if (db().groups().size() == 0) { //данные из базы (.db().)
+            group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
+        }
     }
 
     public void stop() {
-        sessionHelper.logout();
         wd.quit();
     }
 
@@ -60,7 +66,7 @@ public class ApplicationManager {
         return groupHelper;
     }
 
-    public NavigationHelper goTo() {
+    public NavigationHelper GoTo() {
         return navigationHelper;
     }
 

@@ -1,6 +1,8 @@
 package ru.stqa.pft.addressbook.model;
 
 import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -10,46 +12,88 @@ import java.util.Objects;
 import java.util.Set;
 
 
+@XStreamAlias("contact")
 @Entity
-@Table(name = "addressbook")
-public class ContactData {
+@Table(name="addressbook")
+public final class ContactData {
+    @XStreamOmitField
     @Id
+    @Column(name = "id")
     private int id = Integer.MAX_VALUE;
     @Expose
+    @Column(name = "firstname")
     private String firstName;
     @Expose
+    @Column(name = "lastname")
     private String lastName;
     @Expose
+    @Column(name = "address")
+    @Type(type = "text")
     private String address;
     @Expose
-    @Column(name = "mobile", columnDefinition = "text")
-    private String mobilePhone;
-    @Column(name = "work", columnDefinition = "text")
-    private String workPhone;
-    @Column(name = "home", columnDefinition = "text")
-    private String homePhone;
-    @Transient
-    private String allPhones;
-    @Expose
     @Column(name = "email")
-    private String primaryEmail;
+    @Type(type = "text")
+    private String email;
+    @Expose
     @Column(name = "email2")
-    private String secondaryEmail;
+    @Type(type = "text")
+    private String email2;
+    @Expose
     @Column(name = "email3")
-    private String thirdEmail;
+    @Type(type = "text")
+    private String email3;
+    @Expose
     @Transient
     private String allEmails;
-    @Transient
-    private File photo;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "address_in_groups",
-            joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
-    private Set<GroupData> groups = new HashSet<>();
     @Expose
-    @Column(name = "photo", columnDefinition = "mediumtext")
-    private String photoPath = new File(System.getProperty("file.photo", "src/test/resources/1.jpg")).getAbsolutePath();
-    @Column(columnDefinition = "datetime")
-    private String deprecated;
+    @Column(name = "home")
+    @Type(type = "text")
+    private String homePhone;
+    @Expose
+    @Column(name = "mobile")
+    @Type(type = "text")
+    private String mobilePhone;
+    @Expose
+    @Column(name = "work")
+    @Type(type = "text")
+    private String workPhone;
+    @Expose
+    @Transient
+    private String allPhones;
+
+    @Column(name = "photo")
+    @Type(type = "text")
+    @XStreamOmitField
+    transient private File photo;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable (name = "address_in_groups",
+            joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private Set<GroupData> groups = new HashSet<GroupData>();
+
+    public int getId() {
+        return id;
+    }
+
+    public File getPhoto() {
+        return new File(photo.toURI());
+    }
+
+    public String getEmail2() {
+        return email2;
+    }
+
+
+
+    public String getEmail3() {
+        return email3;
+    }
+
+
+    public String getAllEmails() {
+        return allEmails;
+    }
+
 
     public String getFirstName() {
         return firstName;
@@ -63,45 +107,24 @@ public class ContactData {
         return address;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public String getMobilePhone() {
         return mobilePhone;
     }
-    public String getWorkPhone() {
-        return workPhone;
-    }
-
     public String getHomePhone() {
         return homePhone;
+    }
+    public String getWorkPhone() {
+        return workPhone;
     }
 
     public String getAllPhones() {
         return allPhones;
     }
 
-    public String getPrimaryEmail() {
-        return primaryEmail;
-    }
-    public String getSecondaryEmail() {
-        return secondaryEmail;
-    }
-    public String getThirdEmail() {
-        return thirdEmail;
-    }
-    public String getAllEmails() {
-        return allEmails;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public File getPhoto() {
-        return photo;
-    }
-
-    public String getPhotoPath() {
-        return photoPath;
-    }
 
     public Groups getGroups() {
         return new Groups(groups);
@@ -111,7 +134,6 @@ public class ContactData {
         this.id = id;
         return this;
     }
-
     public ContactData withFirstName(String firstName) {
         this.firstName = firstName;
         return this;
@@ -127,12 +149,25 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withMobilePhone(String mobilePhone) {
-        this.mobilePhone = mobilePhone;
+    public ContactData withEmail(String email) {
+        this.email = email;
         return this;
     }
-    public ContactData withWorkPhone(String workPhone) {
-        this.workPhone = workPhone;
+    public ContactData withEmail2(String email2) {
+        this.email2 = email2;
+        return this;
+    }
+    public ContactData withEmail3(String email3) {
+        this.email3 = email3;
+        return this;
+    }
+
+    public ContactData withAllEmails(String allEmails) {
+        this.allEmails = allEmails;
+        return this;
+    }
+    public ContactData withMobilePhone(String mobile) {
+        this.mobilePhone = mobile;
         return this;
     }
 
@@ -141,65 +176,44 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withWorkPhone(String workPhone) {
+        this.workPhone = workPhone;
+        return this;
+    }
+
     public ContactData withAllPhones(String allPhones) {
         this.allPhones = allPhones;
         return this;
     }
 
-    public ContactData withPrimaryEmail(String primaryEmail) {
-        this.primaryEmail = primaryEmail;
-        return this;
-    }
-
-    public ContactData withSecondaryEmail(String secondaryEmail) {
-        this.secondaryEmail = secondaryEmail;
-        return this;
-    }
-
-    public ContactData withThirdEmail(String thirdEmail) {
-        this.thirdEmail = thirdEmail;
-        return this;
-    }
-
-    public ContactData withAllEmails(String allEmails) {
-        this.allEmails = allEmails;
-        return this;
-    }
-
     public ContactData withPhoto(File photo) {
-        this.photo = photo;
+        this.photo = new File(photo.getPath());
         return this;
     }
 
-    public ContactData withPhotoPath() {
-        this.photoPath = photoPath;
+    public ContactData withGroups(Set<GroupData> groups) {
+        this.groups = groups;
         return this;
     }
 
     @Override
     public String toString() {
-        return "ContactData{" +
+        return "contactData{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", address='" + address + '\'' +
-                ", mobilePhone='" + mobilePhone + '\'' +
-                ", workPhone='" + workPhone + '\'' +
-                ", homePhone='" + homePhone + '\'' +
-                ", primaryEmail='" + primaryEmail + '\'' +
                 '}';
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
-        return id == that.id && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(address, that.address) && Objects.equals(mobilePhone, that.mobilePhone) && Objects.equals(workPhone, that.workPhone) && Objects.equals(homePhone, that.homePhone) && Objects.equals(primaryEmail, that.primaryEmail) && Objects.equals(secondaryEmail, that.secondaryEmail) && Objects.equals(thirdEmail, that.thirdEmail);
+        return id == that.id && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(address, that.address) && Objects.equals(email, that.email) && Objects.equals(email2, that.email2) && Objects.equals(email3, that.email3) && Objects.equals(homePhone, that.homePhone) && Objects.equals(mobilePhone, that.mobilePhone) && Objects.equals(workPhone, that.workPhone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, address, mobilePhone, workPhone, homePhone, primaryEmail, secondaryEmail, thirdEmail);
+        return Objects.hash(id, firstName, lastName, address, email, email2, email3, homePhone, mobilePhone, workPhone);
     }
 }
