@@ -24,6 +24,8 @@ public class ApplicationManager {
     private MailHelper mailHelper;
     private uiHelper uiHelper;
     private SoapHelper soapHelper;
+    private RestHelper restHelper;
+    private DbHelper dbHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -50,14 +52,14 @@ public class ApplicationManager {
         return properties.getProperty(key);
     }
 
-    public RegistrationHelper registration() {
+    public RegistrationHelper registration() throws IOException {
         if (registrationHelper == null) {
             registrationHelper = new RegistrationHelper(this);
         }
         return registrationHelper;
     }
 
-    public uiHelper uiHelper() {
+    public uiHelper uiHelper() throws IOException {
         if (uiHelper == null) {
             uiHelper = new uiHelper(this);
         }
@@ -100,5 +102,16 @@ public class ApplicationManager {
             soapHelper = new SoapHelper(this);
         }
         return soapHelper;
+    }
+
+    public RestHelper rest() {
+        if (restHelper == null) {
+            restHelper = new RestHelper(this);
+        }
+        return restHelper;
+    }
+
+    public DbHelper db() {
+        return dbHelper;
     }
 }
