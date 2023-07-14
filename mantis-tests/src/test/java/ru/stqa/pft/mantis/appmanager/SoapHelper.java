@@ -1,7 +1,7 @@
 package ru.stqa.pft.mantis.appmanager;
 
 import biz.futureware.mantis.rpc.soap.client.*;
-import ru.stqa.pft.mantis.model.Issue;
+import ru.stqa.pft.mantis.model.IssueMantis;
 import ru.stqa.pft.mantis.model.Project;
 
 import javax.xml.rpc.ServiceException;
@@ -35,7 +35,7 @@ public class SoapHelper {
                 .collect(Collectors.toSet());
     }
 
-    public Issue addIssue(Issue issue) throws MalformedURLException, ServiceException, RemoteException {
+    public IssueMantis addIssue(IssueMantis issue) throws MalformedURLException, ServiceException, RemoteException {
         MantisConnectPortType mc = getMantisConnect();
         String[] categories =
                 mc.mc_project_get_categories("administrator", "root", BigInteger.valueOf(issue.getProject().getId()));
@@ -46,7 +46,7 @@ public class SoapHelper {
         issueData.setCategory(categories[0]);
         BigInteger issueId = mc.mc_issue_add("administrator", "root", issueData);
         IssueData createdIssueData = mc.mc_issue_get("administrator", "root", issueId);
-        return new Issue()
+        return new IssueMantis()
                 .withId(createdIssueData.getId().intValue())
                 .withSummary(createdIssueData.getSummary())
                 .withDescription(createdIssueData.getDescription())

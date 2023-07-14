@@ -1,3 +1,4 @@
+
 package ru.stqa.pft.mantis.appmanager;
 
 import org.hibernate.Session;
