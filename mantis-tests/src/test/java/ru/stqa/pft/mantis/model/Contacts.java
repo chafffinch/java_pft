@@ -1,3 +1,4 @@
+/*
 package ru.stqa.pft.mantis.model;
 
 import com.google.common.collect.ForwardingSet;
@@ -40,3 +41,4 @@ public class Contacts extends ForwardingSet<ContactData> {
     }
 }
 
+*/

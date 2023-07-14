@@ -16,7 +16,7 @@ public class ContactAddToGroupTest extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        if (app.db().contacts().size() == 0 | app.db().groups().size() == 0 | app.db().verifyContactNotInGroup().size() != 0) { //данные из базы (.db().)
+        if (app.db().contacts().size() == 0 | app.db().groups().size() == 0 | app.db().verifyContactNotInGroup().size() != 0) {
             app.createGroupIfNot();
             ContactData contact = new ContactData();
             app.contact().createWithoutGroup(contact.withFirstName("marina").withLastName("alieva").withAddress("msk")

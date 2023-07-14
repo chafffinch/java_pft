@@ -14,6 +14,7 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.MatchResult;
 
+
 public class ApplicationManager {
     private final String browser;
     private final Properties properties;
@@ -22,14 +23,12 @@ public class ApplicationManager {
     private FtpHelper ftp;
     private MailHelper mailHelper;
     private uiHelper uiHelper;
- /*   private SoapHelper soapHelper;
-    private RestHelper restHelper;*/
-    private DbHelper dbHelper;
+    private SoapHelper soapHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
-        dbHelper = new DbHelper();
         properties = new Properties();
+
     }
 
     public void init() throws IOException {
@@ -51,14 +50,14 @@ public class ApplicationManager {
         return properties.getProperty(key);
     }
 
-    public RegistrationHelper registration() throws IOException {
+    public RegistrationHelper registration() {
         if (registrationHelper == null) {
             registrationHelper = new RegistrationHelper(this);
         }
         return registrationHelper;
     }
 
-    public uiHelper uiHelper() throws IOException {
+    public uiHelper uiHelper() {
         if (uiHelper == null) {
             uiHelper = new uiHelper(this);
         }
@@ -82,10 +81,12 @@ public class ApplicationManager {
                 wd = new InternetExplorerDriver();
             }
             wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+            init();
             wd.get(properties.getProperty("web.baseUrl"));
         }
         return wd;
     }
+
 
     public MailHelper mail() {
         if (mailHelper == null) {
@@ -94,21 +95,10 @@ public class ApplicationManager {
         return mailHelper;
     }
 
-  /*  public SoapHelper soap() {
+    public SoapHelper soap() {
         if (soapHelper == null) {
             soapHelper = new SoapHelper(this);
         }
         return soapHelper;
-    }*/
-
-/*    public RestHelper rest() {
-        if (restHelper == null) {
-            restHelper = new RestHelper(this);
-        }
-        return restHelper;
-    }*/
-
-    public DbHelper db() {
-        return dbHelper;
     }
 }

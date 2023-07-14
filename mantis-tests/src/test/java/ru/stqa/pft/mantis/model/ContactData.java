@@ -1,3 +1,4 @@
+/*
 package ru.stqa.pft.mantis.model;
 
 import javax.persistence.Column;
@@ -80,3 +81,4 @@ public class ContactData {
     }
 }
 
+*/

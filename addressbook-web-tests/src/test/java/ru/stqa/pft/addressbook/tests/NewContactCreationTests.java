@@ -24,7 +24,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class NewContactCreationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validContactsFromXml() throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contact.xml")))) {
             String xml = "";
             String line = reader.readLine();
             while (line != null) {
@@ -40,7 +40,7 @@ public class NewContactCreationTests extends TestBase {
 
     @DataProvider
     public Iterator<Object[]> validContactsFromJson() throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contact.json")))) {
             String json = "";
             String line = reader.readLine();
             while (line != null) {
@@ -54,7 +54,7 @@ public class NewContactCreationTests extends TestBase {
     }
 
     @Test (dataProvider = "validContactsFromJson")
-    public void testContactCreationTests(ContactData contact) throws Exception {
+    public void testNewContactCreationTests(ContactData contact) throws Exception {
         Contacts before = app.db().contacts();
         app.contact().gotoAddContact();
         if (! app.contact().chooseGroup()) {

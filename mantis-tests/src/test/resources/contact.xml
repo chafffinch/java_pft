@@ -1,0 +1,41 @@
+<list>
+    <contact>
+        <firstName>marinaG 0</firstName>
+        <lastName>alievaG 0</lastName>
+        <address>mskG 0</address>
+        <mobilePhone>977-302</mobilePhone>
+        <workPhone>977-303</workPhone>
+        <homePhone>977-304</homePhone>
+        <primaryEmail>m@mail.ruG 0</primaryEmail>
+        <secondaryEmail>a@mail.ruG 0</secondaryEmail>
+        <thirdEmail>ma@mail.ruG 0</thirdEmail>
+        <groups/>
+        <photoPath>C:\Devel\java_pft\java_pft\addressbook-web-tests\src\test\resources\AvatarPhoto.jpg</photoPath>
+    </contact>
+    <contact>
+        <firstName>marinaG 1</firstName>
+        <lastName>alievaG 1</lastName>
+        <address>mskG 1</address>
+        <mobilePhone>977-302</mobilePhone>
+        <workPhone>977-303</workPhone>
+        <homePhone>977-304</homePhone>
+        <primaryEmail>m@mail.ruG 1</primaryEmail>
+        <secondaryEmail>a@mail.ruG 1</secondaryEmail>
+        <thirdEmail>ma@mail.ruG 1</thirdEmail>
+        <groups/>
+        <photoPath>C:\Devel\java_pft\java_pft\addressbook-web-tests\src\test\resources\AvatarPhoto.jpg</photoPath>
+    </contact>
+    <contact>
+        <firstName>marinaG 2</firstName>
+        <lastName>alievaG 2</lastName>
+        <address>mskG 2</address>
+        <mobilePhone>977-302</mobilePhone>
+        <workPhone>977-303</workPhone>
+        <homePhone>977-304</homePhone>
+        <primaryEmail>m@mail.ruG 2</primaryEmail>
+        <secondaryEmail>a@mail.ruG 2</secondaryEmail>
+        <thirdEmail>ma@mail.ruG 2</thirdEmail>
+        <groups/>
+        <photoPath>C:\Devel\java_pft\java_pft\addressbook-web-tests\src\test\resources\AvatarPhoto.jpg</photoPath>
+    </contact>
+</list>
