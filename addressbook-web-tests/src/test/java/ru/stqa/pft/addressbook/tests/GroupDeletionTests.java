@@ -10,23 +10,25 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupDeletionTests extends TestBase {
-
     @BeforeMethod
-    public void ensurePreconditions(){
-        if (app.group().all().size() == 0){
-            app.GoTo().GroupPage();
-            app.group().create(new GroupData().withName("test1"));
+    public void ensurePreconditions() {
+        app.goTo().groupPage();
+        if (app.db().groups().size() == 0) {
+            app.group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
         }
     }
 
     @Test
-    public void testGroupDeletionTests() throws Exception {
-        Groups before =  app.db().groups();
+    public void testGroupDeletion() {
+        Groups before = app.db().groups();
         GroupData deletedGroup = before.iterator().next();
         app.group().delete(deletedGroup);
-        assertThat(app.group().Count(), equalTo(before.size() - 1));
-        Groups after =  app.db().groups();
-        assertThat(after, CoreMatchers.equalTo(before.without(deletedGroup)));
-    }
 
+        assertThat(app.group().count(), equalTo(before.size() - 1));
+
+        Groups after = app.db().groups();
+
+        assertThat(after, equalTo(before.without(deletedGroup)));
+        verifyGroupListInUI();
+    }
 }

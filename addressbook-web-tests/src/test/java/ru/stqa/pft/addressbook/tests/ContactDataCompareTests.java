@@ -1,5 +1,5 @@
-/*
 package ru.stqa.pft.addressbook.tests;
+
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -25,7 +25,7 @@ public class ContactDataCompareTests extends TestBase {
             app.contact().initContactCreation();
             app.contact().createContactWithGroup(new ContactData().withFirstName("marina").withLastName("alieva").withAddress("msk")
                     .withMobilePhone("977-302").withHomePhone("977-303").withWorkPhone("977-304")
-                    .withPrimaryEmail("m@mail.ru").withSecondaryEmail("a@mail.ru").withThirdEmail("ma@mail.ru"));
+                    .withPrimaryEmail("m@test.ru").withSecondaryEmail("a@test.ru").withThirdEmail("ma@test.ru"));
         }
     }
 
@@ -34,6 +34,7 @@ public class ContactDataCompareTests extends TestBase {
         app.goTo().homePage();
         ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().fullnamePhonesEmailsFromEditForm(contact);
+
         assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
         assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
         assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
@@ -55,4 +56,4 @@ public class ContactDataCompareTests extends TestBase {
         return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
     }
 
-}*/
+}

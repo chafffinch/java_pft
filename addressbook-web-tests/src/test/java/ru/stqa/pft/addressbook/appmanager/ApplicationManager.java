@@ -5,7 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.io.File;
 import java.io.FileReader;
@@ -15,8 +14,7 @@ import java.util.Properties;
 
 public class ApplicationManager {
     private final Properties properties;
-    WebDriver wd;
-
+    public WebDriver wd;
     private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
@@ -24,9 +22,12 @@ public class ApplicationManager {
     private final String browser;
     private DbHelper dbHelper;
 
+
     public ApplicationManager(String browser) {
         this.browser = browser;
+
         properties = new Properties();
+
     }
 
     public void init() throws IOException {
@@ -45,20 +46,14 @@ public class ApplicationManager {
         //    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         wd.get(properties.getProperty("web.baseUrl"));
         groupHelper = new GroupHelper(wd);
-        contactHelper = new ContactHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
-        sessionHelper.Login(properties.getProperty("web.baseUrl"), properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
-    }
-
-    public void createGroupIfNot() {
-        GoTo().GroupPage();
-        if (db().groups().size() == 0) { //данные из базы (.db().)
-            group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
-        }
+        contactHelper = new ContactHelper(wd);
+        sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
     }
 
     public void stop() {
+        sessionHelper.logout();
         wd.quit();
     }
 
@@ -66,7 +61,7 @@ public class ApplicationManager {
         return groupHelper;
     }
 
-    public NavigationHelper GoTo() {
+    public NavigationHelper goTo() {
         return navigationHelper;
     }
 

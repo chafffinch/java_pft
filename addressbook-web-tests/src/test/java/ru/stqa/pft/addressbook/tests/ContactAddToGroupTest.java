@@ -6,37 +6,57 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class ContactAddToGroupTest extends TestBase {
 
-    File photo = new File("src/test/resources/AvatarPhoto.jpg");
-
     @BeforeMethod
-    public void ensurePreconditions() {
-        if (app.db().contacts().size() == 0 | app.db().groups().size() == 0 | app.db().verifyContactNotInGroup().size() != 0) {
-            app.createGroupIfNot();
-            ContactData contact = new ContactData();
-            app.contact().createWithoutGroup(contact.withFirstName("marina").withLastName("alieva").withAddress("msk")
-                    .withEmail("m@mail.ru").withEmail2("a@mail.ru").withEmail3("ma@mail.ru")
-                    .withHomePhone("977-303").withMobilePhone("977-302").withWorkPhone("977-304"));
-            app.contact().gotoHomePage();
+    public void checkForContactToExist(){
+        if (app.db().contacts().size() == 0){
+            app.goTo().homePage();
+            app.contact().initContactCreation();
+            app.contact().createContactWithoutGroup(new ContactData().withFirstName("marina").withLastName("alieva").withAddress("msk")
+                    .withMobilePhone("977-302").withHomePhone("977-303").withWorkPhone("977-304")
+                    .withPrimaryEmail("m@test.ru").withSecondaryEmail("a@test.ru").withThirdEmail("ma@test.ru"));
         }
     }
 
     @Test
     public void testAddContactInGroup() {
-        ContactData before = app.db().contactWithoutGroup();
-        Groups groups = app.db().groups();
-        GroupData group = groups.iterator().next();
-        app.contact().gotoHomePage();
-        app.contact().selectContactWithoutGroup(before);
-        app.contact().selectGroup(group);
-        app.contact().addContactToGroup();
-        ContactData after = app.db().contactById(before.getId());
-        assertTrue(after.getGroups().contains(group));
-        verifyContactListInUI();
+        app.goTo().homePage();
+        ContactData contact = app.db().contacts().iterator().next();
+        if (checkForNotUsedGroups().size() == 0) {
+            Groups groupsBeforeCreation = app.db().groups();
+            app.goTo().groupPage();
+            app.group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
+            Groups groupsAfterCreation = app.db().groups();
+            List<GroupData> newGroup = new ArrayList<>(groupsAfterCreation);
+            newGroup.removeAll(groupsBeforeCreation);
+            app.goTo().homePage();
+            int groupToUse = newGroup.iterator().next().getId();
+            app.contact().addToGroup(contact.getId(), groupToUse);
+
+            assertEquals(0, checkForNotUsedGroups().size());
+        } else {
+            Groups groupsBeforeAdditions = contact.getGroups();
+            int groupToUse = checkForNotUsedGroups().iterator().next().getId();
+            app.contact().addToGroup(contact.getId(), groupToUse);
+            ContactData freshDataContact = app.db().contacts().iterator().next();
+            Groups groupsAfterAdditions = freshDataContact.getGroups();
+
+            assertEquals(groupsBeforeAdditions.size() + 1, groupsAfterAdditions.size());
+        }
+    }
+
+    public List<GroupData> checkForNotUsedGroups() {
+        ContactData contact = app.db().contacts().iterator().next();
+        Groups groupsInContact = contact.getGroups();
+        Groups allGroups = app.db().groups();
+        List<GroupData> difference = new ArrayList<>(allGroups);
+        difference.removeAll(groupsInContact);
+        return difference;
     }
 }

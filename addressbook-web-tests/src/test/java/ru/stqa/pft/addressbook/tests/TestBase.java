@@ -23,27 +23,13 @@ public class TestBase {
             = new ApplicationManager(System.getProperty("browser", BrowserType.FIREFOX));
 
     @BeforeSuite(alwaysRun = true)
-    public void setUp() throws Exception {
+    public void setUp() throws IOException {
         app.init();
     }
 
     @AfterSuite(alwaysRun = true)
-    public void tearDown() throws Exception {
+    public void tearDown() {
         app.stop();
-    }
-
-    @BeforeMethod
-    public void logTestStart(Method m, Object[] p) {
-
-    }
-
-    @AfterMethod
-    public void logTestStop(Method m) {
-
-    }
-
-    public ApplicationManager getApp() {
-        return app;
     }
 
     public void verifyGroupListInUI() {
@@ -56,14 +42,12 @@ public class TestBase {
         }
     }
 
-
     public void verifyContactListInUI() {
         if (Boolean.getBoolean("verifyUI")) {
             Contacts dbContacts = app.db().contacts();
             Contacts uiContacts = app.contact().all();
             assertThat(uiContacts, equalTo(dbContacts.stream()
-                    .map((c) -> new ContactData().withId(c.getId()).withFirstName(c.getFirstName()).withLastName(c.getLastName())
-                            .withAddress(c.getAddress()))
+                    .map((g) -> new ContactData().withId(g.getId()).withFirstName(g.getFirstName()).withLastName(g.getLastName()).withAddress(g.getAddress()))
                     .collect(Collectors.toSet())));
         }
     }
