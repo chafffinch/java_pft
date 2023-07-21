@@ -1,4 +1,5 @@
 package ru.stqa.pft.mantis.tests;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -9,27 +10,27 @@ import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.List;
 
-import static java.lang.String.format;
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.Assert.assertTrue;
 
-public class RegistrationTests extends TestBase {
+public class RegistrationTests extends TestBase{
 
     @BeforeMethod
-    public void startMailServer() {
+    public void startMailServer(){
         app.mail().start();
     }
 
     @Test
     public void testRegistration() throws MessagingException, IOException {
         long now = System.currentTimeMillis();
-        String user = format("user%s", now);
+        String email = String.format("test_%s@test.ru", now);
+        String user =  String.format("user_%s", now);
         String password = "password";
-        String email = format("user%s@localhost.localdomain", now);
         app.registration().start(user, email);
-        List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
+        List<MailMessage> mailMessages = app.mail().waitForEmail(2, 10000);
         String confirmationLink = findConfirmationLink(mailMessages, email);
         app.registration().finish(confirmationLink, password);
         assertTrue(app.newSession().login(user, password));
+
     }
 
     private String findConfirmationLink(List<MailMessage> mailMessages, String email) {
@@ -39,7 +40,8 @@ public class RegistrationTests extends TestBase {
     }
 
     @AfterMethod(alwaysRun = true)
-    public void stopMailServer() {
+    public void stopMailServer(){
         app.mail().stop();
     }
+
 }

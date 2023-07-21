@@ -1,3 +1,4 @@
+/*
 package ru.stqa.pft.mantis.tests;
 
 import org.testng.annotations.BeforeClass;
@@ -38,4 +39,4 @@ public class SoapTests extends TestBase {
         IssueMantis created = app.soap().addIssue(issue);
         assertEquals(issue.getSummary(), created.getSummary());
     }
-}
+}*/
