@@ -163,4 +163,4 @@ public class JamesHelper {
         Folder folder = store.getDefaultFolder().getFolder("INBOX");
         return folder;
     }
-} 
+}

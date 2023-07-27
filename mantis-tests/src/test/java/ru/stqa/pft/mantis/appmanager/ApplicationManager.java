@@ -4,14 +4,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.Browser;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
 
@@ -54,16 +53,16 @@ public class ApplicationManager {
 
     public WebDriver getDriver() {
         if (wd == null){
-            if (browser.equals(BrowserType.FIREFOX)) {
-                wd = new FirefoxDriver();
-            } else if (browser.equals(BrowserType.CHROME)) {
+            if (browser.equals(Browser.CHROME.browserName())) {
                 wd = new ChromeDriver();
-            } else if (browser.equals(BrowserType.IE)) {
+            } else if (browser.equals(Browser.IE.browserName())) {
                 wd = new InternetExplorerDriver();
+            } else if (browser.equals(Browser.FIREFOX.browserName())) {
+                wd = new FirefoxDriver(new FirefoxOptions().setBinary(properties.getProperty("web.pathToFirefox")));
             }
-            wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+            wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             wd.get(properties.getProperty("web.baseUrl"));
-
+//            webSessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
         }
         return wd;
     }
