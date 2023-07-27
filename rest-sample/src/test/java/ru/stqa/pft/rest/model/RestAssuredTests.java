@@ -1,4 +1,4 @@
-/*
+package ru.stqa.pft.rest.model;/*
 package ru.stqa.pft.mantis.model;
 
 import com.jayway.restassured.RestAssured;
@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.mantis.model.IssueBugify;
-import ru.stqa.pft.mantis.tests.TestBase;
+import ru.stqa.pft.tests.stqa.pft.rest.TestBase;
 
 import java.util.Set;
 

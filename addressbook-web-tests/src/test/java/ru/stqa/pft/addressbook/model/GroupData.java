@@ -32,8 +32,6 @@ public class GroupData {
     @ManyToMany(mappedBy = "groups")
     private Set<ContactData> contacts = new HashSet<ContactData>();
 
-    //создана группа с неизвестным id
-
     public String getName() {
 
         return name;

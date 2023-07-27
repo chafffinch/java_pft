@@ -1,4 +1,4 @@
-/*
+package ru.stqa.pft.rest.tests;/*
 package ru.stqa.pft.mantis.tests;
 
 import org.testng.annotations.Test;

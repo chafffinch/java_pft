@@ -1,4 +1,4 @@
-/*
+package ru.stqa.pft.rest.model;/*
 package ru.stqa.pft.mantis.model;
 
 public class IssueMantis {

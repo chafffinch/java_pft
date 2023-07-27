@@ -1,4 +1,4 @@
-/*
+package ru.stqa.pft.rest.appmanager;/*
 package ru.stqa.pft.mantis.appmanager;
 import biz.futureware.mantis.rpc.soap.client.*;
 import ru.stqa.pft.mantis.model.Issue;

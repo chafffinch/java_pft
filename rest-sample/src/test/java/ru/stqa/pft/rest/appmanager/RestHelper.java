@@ -1,4 +1,4 @@
-/*
+package ru.stqa.pft.rest.appmanager;/*
 package ru.stqa.pft.mantis.appmanager;
 
 import com.google.common.reflect.TypeToken;
