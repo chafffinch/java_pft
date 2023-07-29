@@ -1,4 +1,3 @@
-/*
 package ru.stqa.pft.mantis.tests;
 
 import org.testng.annotations.Test;
@@ -32,4 +31,3 @@ public class SoapTests extends TestBase{
         assertEquals(issue.getSummary(), created.getSummary());
     }
 }
-}*/

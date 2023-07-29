@@ -1,4 +1,3 @@
-/*
 package ru.stqa.pft.mantis.model;
 
 public class Project {
@@ -23,5 +22,3 @@ public class Project {
         return this;
     }
 }
-
-*/

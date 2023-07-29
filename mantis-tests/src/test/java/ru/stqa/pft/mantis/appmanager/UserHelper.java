@@ -10,7 +10,7 @@ public class UserHelper extends HelperBase{
         super(app);
     }
     public void initChangeUserPassword(UserData user){
-        app.webHelper().login("administrator", "root");
+        app.webHelper().login(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword"));
         goToManageUsers();
         selectUser(user.getId());
         initResetPassword();

@@ -16,6 +16,8 @@ dependencies {
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.5'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.30'
     implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.6.12.Final'
+    implementation group: 'biz.futureware.mantis', name: 'mantis-axis-soap-client', version: '1.2.19'
+
 }
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'

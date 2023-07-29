@@ -1,4 +1,3 @@
-/*
 package ru.stqa.pft.mantis.model;
 
 public class Issue {
@@ -52,4 +51,4 @@ public class Issue {
         this.status = status;
         return this;
     }
-} */
+} 
