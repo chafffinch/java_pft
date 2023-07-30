@@ -1,4 +1,3 @@
-/*
 package ru.stqa.pft.rest.appmanager;
 
 import com.google.gson.Gson;
@@ -50,4 +49,4 @@ public class JsonHelper {
         JsonElement first = issues.getAsJsonArray().get(0);
         return first.getAsJsonObject().get("state_name").getAsString();
     }
-}*/
+}
