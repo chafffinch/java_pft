@@ -25,7 +25,7 @@ public class ApplicationManager {
     public WebDriver wd;
     private ContactHelper contactHelper;
     private SessionHelper sessionHelper;
-    private  NavigationHelper navigationHelper;
+    private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
     private JavascriptExecutor js;
     private DbHelper dbHelper;
@@ -55,22 +55,16 @@ public class ApplicationManager {
             capabilities.setBrowserName(browser);
             capabilities.setPlatform(Platform.fromString(System.getProperty("platform", "linux")));
             wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
-            if (browser.equals(BrowserType.FIREFOX)) {
-                wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-            } else {
-                wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-            }
-            wd.get(properties.getProperty("web.baseUrl"));
-            groupHelper = new GroupHelper(wd);
-            navigationHelper = new NavigationHelper(wd);
-            sessionHelper = new SessionHelper(wd);
-            contactHelper = new ContactHelper(wd);
-            sessionHelper.login(properties.getProperty("web.adminLogin"),
-                    properties.getProperty("web.adminPassword"));
-
-
         }
+        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        groupHelper = new GroupHelper(wd);
+        navigationHelper = new NavigationHelper(wd);
+        contactHelper = new ContactHelper(wd);
+        sessionHelper = new SessionHelper(wd);
+        wd.get(properties.getProperty("web.baseUrl"));
+        sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
     }
+
     public void logout() {
         wd.findElement(By.linkText("Logout")).click();
     }
