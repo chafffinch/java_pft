@@ -1,0 +1,304 @@
+283  [main] DEBUG org.jboss.logging -%PARSER_ERROR[kvp]- Logging Provider: org.jboss.logging.Slf4jLoggerProvider
+315  [main] DEBUG o.h.i.i.IntegratorServiceImpl -%PARSER_ERROR[kvp]- Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+319  [main] DEBUG o.h.i.i.IntegratorServiceImpl -%PARSER_ERROR[kvp]- Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+329  [main] DEBUG o.h.i.i.IntegratorServiceImpl -%PARSER_ERROR[kvp]- Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+365  [main] INFO  org.hibernate.Version -%PARSER_ERROR[kvp]- HHH000412: Hibernate ORM core version 5.6.14.Final
+368  [main] DEBUG org.hibernate.cfg.Environment -%PARSER_ERROR[kvp]- HHH000206: hibernate.properties not found
+713  [main] DEBUG o.h.b.j.i.s.LocalXmlResourceResolver -%PARSER_ERROR[kvp]- Interpreting public/system identifier : [-//Hibernate/Hibernate Configuration DTD 3.0//EN] - [http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd]
+714  [main] DEBUG o.h.b.j.i.s.LocalXmlResourceResolver -%PARSER_ERROR[kvp]- Recognized hibernate-configuration identifier; attempting to resolve on classpath under org/hibernate/
+719  [main] DEBUG o.h.b.c.internal.JaxbCfgProcessor -%PARSER_ERROR[kvp]- cfg.xml document did not define namespaces; wrapping in custom event reader to introduce namespace information
+1018 [main] DEBUG o.h.service.spi.ServiceBinding -%PARSER_ERROR[kvp]- Overriding existing service binding [org.hibernate.secure.spi.JaccService]
+1044 [main] DEBUG o.h.c.i.RegionFactoryInitiator -%PARSER_ERROR[kvp]- Cannot default RegionFactory based on registered strategies as `[]` RegionFactory strategies were registered
+1046 [main] DEBUG o.h.c.i.RegionFactoryInitiator -%PARSER_ERROR[kvp]- Cache region factory : org.hibernate.cache.internal.NoCachingRegionFactory
+1078 [main] INFO  o.h.annotations.common.Version -%PARSER_ERROR[kvp]- HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+1136 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration boolean -> org.hibernate.type.BooleanType@7d286fb6
+1136 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration boolean -> org.hibernate.type.BooleanType@7d286fb6
+1137 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@7d286fb6
+1138 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@44c73c26
+1138 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration true_false -> org.hibernate.type.TrueFalseType@7fcf2fc1
+1139 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration yes_no -> org.hibernate.type.YesNoType@41294f8
+1140 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration byte -> org.hibernate.type.ByteType@6d07a63d
+1140 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration byte -> org.hibernate.type.ByteType@6d07a63d
+1140 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@6d07a63d
+1141 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration character -> org.hibernate.type.CharacterType@d278d2b
+1142 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration char -> org.hibernate.type.CharacterType@d278d2b
+1142 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@d278d2b
+1143 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration short -> org.hibernate.type.ShortType@3081f72c
+1143 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration short -> org.hibernate.type.ShortType@3081f72c
+1143 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.lang.Short -> org.hibernate.type.ShortType@3081f72c
+1145 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration integer -> org.hibernate.type.IntegerType@3561c410
+1145 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration int -> org.hibernate.type.IntegerType@3561c410
+1145 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@3561c410
+1146 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration long -> org.hibernate.type.LongType@20f5281c
+1147 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration long -> org.hibernate.type.LongType@20f5281c
+1147 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.lang.Long -> org.hibernate.type.LongType@20f5281c
+1147 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration float -> org.hibernate.type.FloatType@4397ad89
+1147 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration float -> org.hibernate.type.FloatType@4397ad89
+1148 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.lang.Float -> org.hibernate.type.FloatType@4397ad89
+1148 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration double -> org.hibernate.type.DoubleType@71329995
+1149 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration double -> org.hibernate.type.DoubleType@71329995
+1149 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@71329995
+1150 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@4ddbbdf8
+1150 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@4ddbbdf8
+1151 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration big_integer -> org.hibernate.type.BigIntegerType@1115ec15
+1151 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@1115ec15
+1152 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration string -> org.hibernate.type.StringType@79dc5318
+1152 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.lang.String -> org.hibernate.type.StringType@79dc5318
+1153 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration nstring -> org.hibernate.type.StringNVarcharType@6f7923a5
+1153 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@45a37759
+1154 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration url -> org.hibernate.type.UrlType@1838ccb8
+1154 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.net.URL -> org.hibernate.type.UrlType@1838ccb8
+1156 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration Duration -> org.hibernate.type.DurationType@4b213651
+1156 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.time.Duration -> org.hibernate.type.DurationType@4b213651
+1175 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration Instant -> org.hibernate.type.InstantType@71e9ebae
+1175 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.time.Instant -> org.hibernate.type.InstantType@71e9ebae
+1178 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@42530531
+1178 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@42530531
+1179 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration LocalDate -> org.hibernate.type.LocalDateType@6bc407fd
+1179 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@6bc407fd
+1181 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@5ef5c734
+1181 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@5ef5c734
+1183 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@3697186
+1183 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@3697186
+1185 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@46b61c56
+1185 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@46b61c56
+1188 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@6c4980d3
+1188 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@6c4980d3
+1191 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration date -> org.hibernate.type.DateType@1fb669c3
+1191 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.sql.Date -> org.hibernate.type.DateType@1fb669c3
+1192 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration time -> org.hibernate.type.TimeType@68df9280
+1192 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.sql.Time -> org.hibernate.type.TimeType@68df9280
+1194 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration timestamp -> org.hibernate.type.TimestampType@3f91b517
+1194 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@3f91b517
+1194 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.util.Date -> org.hibernate.type.TimestampType@3f91b517
+1196 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@2421cc4
+1197 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration calendar -> org.hibernate.type.CalendarType@58ce9668
+1197 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@58ce9668
+1197 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@58ce9668
+1198 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@2796aeae
+1198 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration calendar_time -> org.hibernate.type.CalendarTimeType@51fadaff
+1199 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration locale -> org.hibernate.type.LocaleType@67d18ed7
+1199 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@67d18ed7
+1201 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration currency -> org.hibernate.type.CurrencyType@7a67e3c6
+1201 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@7a67e3c6
+1202 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration timezone -> org.hibernate.type.TimeZoneType@600b90df
+1202 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@600b90df
+1202 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration class -> org.hibernate.type.ClassType@78d6692f
+1202 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.lang.Class -> org.hibernate.type.ClassType@78d6692f
+1203 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@558bdf1f
+1203 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@558bdf1f
+1203 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@67545b57
+1205 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration binary -> org.hibernate.type.BinaryType@74589991
+1205 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration byte[] -> org.hibernate.type.BinaryType@74589991
+1205 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration [B -> org.hibernate.type.BinaryType@74589991
+1206 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@1869fbd2
+1206 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@1869fbd2
+1206 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@1869fbd2
+1207 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration row_version -> org.hibernate.type.RowVersionType@ca30bc1
+1207 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration image -> org.hibernate.type.ImageType@416c58f5
+1208 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration characters -> org.hibernate.type.CharArrayType@7a362b6b
+1208 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration char[] -> org.hibernate.type.CharArrayType@7a362b6b
+1208 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration [C -> org.hibernate.type.CharArrayType@7a362b6b
+1209 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@512baff6
+1209 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@512baff6
+1209 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@512baff6
+1210 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration text -> org.hibernate.type.TextType@1800a575
+1210 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration ntext -> org.hibernate.type.NTextType@130e116b
+1212 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration blob -> org.hibernate.type.BlobType@141e5bef
+1212 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@141e5bef
+1212 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@66c61024
+1214 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration clob -> org.hibernate.type.ClobType@7a1a14a4
+1214 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@7a1a14a4
+1215 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration nclob -> org.hibernate.type.NClobType@1e461e41
+1215 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@1e461e41
+1215 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@3899782c
+1216 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@4b23c30a
+1217 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration serializable -> org.hibernate.type.SerializableType@13ad5cd3
+1271 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration object -> org.hibernate.type.ObjectType@4c1f22f3
+1271 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@4c1f22f3
+1273 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@7ae42ce3
+1273 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@4f5991f6
+1273 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@484094a5
+1273 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@38234a38
+1274 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@63fbfaeb
+1274 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@602e0143
+1274 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@2c07545f
+1274 [main] DEBUG o.hibernate.type.BasicTypeRegistry -%PARSER_ERROR[kvp]- Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@e57b96d
+1306 [main] DEBUG o.h.i.f.i.DefaultIdentifierGeneratorFactory -%PARSER_ERROR[kvp]- Registering IdentifierGenerator strategy [uuid2] -> [org.hibernate.id.UUIDGenerator]
+1306 [main] DEBUG o.h.i.f.i.DefaultIdentifierGeneratorFactory -%PARSER_ERROR[kvp]- Registering IdentifierGenerator strategy [guid] -> [org.hibernate.id.GUIDGenerator]
+1307 [main] DEBUG o.h.i.f.i.DefaultIdentifierGeneratorFactory -%PARSER_ERROR[kvp]- Registering IdentifierGenerator strategy [uuid] -> [org.hibernate.id.UUIDHexGenerator]
+1307 [main] DEBUG o.h.i.f.i.DefaultIdentifierGeneratorFactory -%PARSER_ERROR[kvp]- Registering IdentifierGenerator strategy [uuid.hex] -> [org.hibernate.id.UUIDHexGenerator]
+1308 [main] DEBUG o.h.i.f.i.DefaultIdentifierGeneratorFactory -%PARSER_ERROR[kvp]- Registering IdentifierGenerator strategy [assigned] -> [org.hibernate.id.Assigned]
+1309 [main] DEBUG o.h.i.f.i.DefaultIdentifierGeneratorFactory -%PARSER_ERROR[kvp]- Registering IdentifierGenerator strategy [identity] -> [org.hibernate.id.IdentityGenerator]
+1310 [main] DEBUG o.h.i.f.i.DefaultIdentifierGeneratorFactory -%PARSER_ERROR[kvp]- Registering IdentifierGenerator strategy [select] -> [org.hibernate.id.SelectGenerator]
+1311 [main] DEBUG o.h.i.f.i.DefaultIdentifierGeneratorFactory -%PARSER_ERROR[kvp]- Registering IdentifierGenerator strategy [sequence] -> [org.hibernate.id.enhanced.SequenceStyleGenerator]
+1312 [main] DEBUG o.h.i.f.i.DefaultIdentifierGeneratorFactory -%PARSER_ERROR[kvp]- Registering IdentifierGenerator strategy [seqhilo] -> [org.hibernate.id.SequenceHiLoGenerator]
+1313 [main] DEBUG o.h.i.f.i.DefaultIdentifierGeneratorFactory -%PARSER_ERROR[kvp]- Registering IdentifierGenerator strategy [increment] -> [org.hibernate.id.IncrementGenerator]
+1314 [main] DEBUG o.h.i.f.i.DefaultIdentifierGeneratorFactory -%PARSER_ERROR[kvp]- Registering IdentifierGenerator strategy [foreign] -> [org.hibernate.id.ForeignGenerator]
+1314 [main] DEBUG o.h.i.f.i.DefaultIdentifierGeneratorFactory -%PARSER_ERROR[kvp]- Registering IdentifierGenerator strategy [sequence-identity] -> [org.hibernate.id.SequenceIdentityGenerator]
+1314 [main] DEBUG o.h.i.f.i.DefaultIdentifierGeneratorFactory -%PARSER_ERROR[kvp]- Registering IdentifierGenerator strategy [enhanced-sequence] -> [org.hibernate.id.enhanced.SequenceStyleGenerator]
+1315 [main] DEBUG o.h.i.f.i.DefaultIdentifierGeneratorFactory -%PARSER_ERROR[kvp]- Registering IdentifierGenerator strategy [enhanced-table] -> [org.hibernate.id.enhanced.TableGenerator]
+1322 [main] WARN  o.hibernate.orm.connections.pooling -%PARSER_ERROR[kvp]- HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+1331 [main] INFO  o.hibernate.orm.connections.pooling -%PARSER_ERROR[kvp]- HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/addressbook]
+1331 [main] INFO  o.hibernate.orm.connections.pooling -%PARSER_ERROR[kvp]- HHH10001001: Connection properties: {user=root, password=}
+1331 [main] INFO  o.hibernate.orm.connections.pooling -%PARSER_ERROR[kvp]- HHH10001003: Autocommit mode: false
+1334 [main] DEBUG o.h.e.j.c.i.DriverManagerConnectionProviderImpl -%PARSER_ERROR[kvp]- Initializing Connection pool with 1 Connections
+1335 [main] INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl -%PARSER_ERROR[kvp]- HHH000115: Hibernate connection pool size: 1 (min=1)
+5606 [main] WARN  o.h.e.j.e.i.JdbcEnvironmentInitiator -%PARSER_ERROR[kvp]- HHH000342: Could not obtain connection to query metadata
+java.lang.IllegalStateException: Cannot get a connection as the driver manager is not properly initialized
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.getConnection(DriverManagerConnectionProviderImpl.java:220) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:181) ~[hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:68) ~[hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101) ~[hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.configure(JdbcServicesImpl.java:51) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:107) ~[hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.convertSqlException(BasicConnectionCreator.java:129) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:42) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:62) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:457) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:323) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:297) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:501) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:101) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:76) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:107) ~[hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:146) ~[hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101) ~[hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:175) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:173) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:127) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:86) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:479) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:85) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.MetadataSources.buildMetadata(MetadataSources.java:202) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at ru.stqa.pft.addressbook.appmanager.DbHelper.<init>(DbHelper.java:23) [classes/:na]
+	at ru.stqa.pft.addressbook.appmanager.ApplicationManager.init(ApplicationManager.java:43) [classes/:na]
+	at ru.stqa.pft.addressbook.tests.TestBase.setUp(TestBase.java:25) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_372]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_372]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_372]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_372]
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133) [testng-7.0.0.jar:na]
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62) [testng-7.0.0.jar:na]
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:340) [testng-7.0.0.jar:na]
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:294) [testng-7.0.0.jar:na]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:345) [testng-7.0.0.jar:na]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:304) [testng-7.0.0.jar:na]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53) [testng-7.0.0.jar:na]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96) [testng-7.0.0.jar:na]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180) [testng-7.0.0.jar:na]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1102) [testng-7.0.0.jar:na]
+	at org.testng.TestNG.runSuites(TestNG.java:1032) [testng-7.0.0.jar:na]
+	at org.testng.TestNG.run(TestNG.java:1000) [testng-7.0.0.jar:na]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66) [testng-rt.jar:na]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:na]
+5632 [main] INFO  org.hibernate.dialect.Dialect -%PARSER_ERROR[kvp]- HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+5649 [main] DEBUG o.h.e.j.e.s.IdentifierHelperBuilder -%PARSER_ERROR[kvp]- IdentifierCaseStrategy for both quoted and unquoted identifiers was set to the same strategy [MIXED]; that will likely lead to problems in schema update and validation if using quoted identifiers
+5654 [main] DEBUG o.h.e.j.e.i.LobCreatorBuilderImpl -%PARSER_ERROR[kvp]- HHH000422: Disabling contextual LOB creation as connection was null
+5657 [main] DEBUG o.h.e.jdbc.spi.SqlExceptionHelper -%PARSER_ERROR[kvp]- Error calling Driver#connect [null]
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:829) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:449) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:242) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:39) ~[hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:62) ~[hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:457) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:323) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:297) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:501) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:101) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:76) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:107) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:146) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:175) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:173) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:127) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:86) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:479) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:85) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at org.hibernate.boot.MetadataSources.buildMetadata(MetadataSources.java:202) [hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	at ru.stqa.pft.addressbook.appmanager.DbHelper.<init>(DbHelper.java:23) [classes/:na]
+	at ru.stqa.pft.addressbook.appmanager.ApplicationManager.init(ApplicationManager.java:43) [classes/:na]
+	at ru.stqa.pft.addressbook.tests.TestBase.setUp(TestBase.java:25) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_372]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_372]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_372]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_372]
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133) [testng-7.0.0.jar:na]
+	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62) [testng-7.0.0.jar:na]
+	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:340) [testng-7.0.0.jar:na]
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:294) [testng-7.0.0.jar:na]
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:345) [testng-7.0.0.jar:na]
+	at org.testng.SuiteRunner.run(SuiteRunner.java:304) [testng-7.0.0.jar:na]
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53) [testng-7.0.0.jar:na]
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96) [testng-7.0.0.jar:na]
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180) [testng-7.0.0.jar:na]
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1102) [testng-7.0.0.jar:na]
+	at org.testng.TestNG.runSuites(TestNG.java:1032) [testng-7.0.0.jar:na]
+	at org.testng.TestNG.run(TestNG.java:1000) [testng-7.0.0.jar:na]
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66) [testng-rt.jar:na]
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105) [testng-rt.jar:na]
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_372]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_372]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_372]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[na:1.8.0_372]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:949) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:819) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	... 52 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[na:1.8.0_372]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[na:1.8.0_372]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_372]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_372]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_372]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[na:1.8.0_372]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_372]
+	at java.net.Socket.connect(Socket.java:613) ~[na:1.8.0_372]
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:156) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	... 55 common frames omitted
+5657 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper -%PARSER_ERROR[kvp]- SQL Error: 0, SQLState: 08S01
+5657 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper -%PARSER_ERROR[kvp]- Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.

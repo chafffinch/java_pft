@@ -15,7 +15,7 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation 'org.testng:testng:7.6.1'
+    implementation 'org.testng:testng:7.0.0'
     implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
     implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
     implementation "jakarta.xml.ws:jakarta.xml.ws-api:4.0.0"
